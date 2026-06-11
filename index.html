@@ -61,8 +61,6 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
 .sub-nav button{padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-size:.85em;}
 .sub-nav button:hover,.sub-nav button.active{background:var(--orange-bg);color:var(--orange);border-color:var(--orange);}
 .sub-tab{display:none;}.sub-tab.active{display:block;}
-.sub-tab-co{{display:none;}}
-.sub-tab-co.active{{display:block;}}
 .sub-tab-co{display:none;}
 .sub-tab-co.active{display:block;}
 .glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;}
@@ -378,6 +376,8 @@ document.querySelectorAll('#mainNav button').forEach(btn=>{ btn.addEventListener
 
 // Learn sub-tabs
 document.querySelectorAll('#learnNav button').forEach(btn=>{ btn.addEventListener('click',()=>{ document.querySelectorAll('#learnNav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.sub-tab').forEach(t=>t.classList.remove('active'));document.getElementById('sub-'+btn.dataset.sub).classList.add('active'); }); });
+
+document.querySelectorAll('#companyNav button').forEach(btn=>{ btn.addEventListener('click',()=>{ document.querySelectorAll('#companyNav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.sub-tab-co').forEach(t=>t.classList.remove('active'));document.getElementById('sub-co-'+btn.dataset.subCo).classList.add('active'); }); });
 
 // Timeline data
 const events = [
