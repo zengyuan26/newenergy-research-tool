@@ -182,6 +182,9 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
 </div>
 
 <div class="tab" id="tab-timeline">
+  <div class="filter-bar" id="filterBarYear" style="margin-bottom:8px;">
+    <button class="active" data-year="all">📅 全部年份</button>
+  </div>
   <div class="filter-bar" id="filterBar">
     <button class="active" data-filter="all">全部</button>
     <button data-filter="pl">📋 政策</button>
@@ -491,8 +494,8 @@ const events = [
   }
 ];
 
-function renderTimeline(filter='all'){
-  const f=filter==='all'?events:events.filter(e=>e.t===filter);
+function renderTimeline(filter='all',year='all'){
+  let f=filter==='all'?events:events.filter(e=>e.t===filter);if(year!=='all'){f=f.filter(e=>e.y===parseInt(year));}
   if(f.length===0){document.getElementById('timelineContainer').innerHTML='<div class="timeline-empty">该分类下暂无事件</div>';return;}
   const years=[...new Set(f.map(e=>e.y))].sort((a,b)=>b-a);
   const grouped={};
@@ -521,9 +524,15 @@ function renderTimeline(filter='all'){
   });
   document.getElementById('timelineContainer').innerHTML=html;
 }
+// Generate year buttons
+const years=[...new Set(events.map(e=>e.y))].sort((a,b)=>b-a);
+const yb=document.getElementById('filterBarYear');
+years.forEach(y=>{const b=document.createElement('button');b.dataset.year=y;b.textContent=y;b.addEventListener('click',()=>{document.querySelectorAll('#filterBarYear button').forEach(x=>x.classList.remove('active'));b.classList.add('active');currentYear=y;renderTimeline(currentFilter,currentYear);});yb.appendChild(b);});
 renderTimeline();
 
-document.querySelectorAll('#filterBar button').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('#filterBar button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderTimeline(btn.dataset.filter);});});
+let currentFilter='all',currentYear='all';
+document.querySelectorAll('#filterBar button').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('#filterBar button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentFilter=btn.dataset.filter;renderTimeline(currentFilter,currentYear);});});
+document.querySelectorAll('#filterBarYear button').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('#filterBarYear button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentYear=btn.dataset.year;renderTimeline(currentFilter,currentYear);});});
 
 // Calculator
 function calculate(){
