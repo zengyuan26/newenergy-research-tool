@@ -92,21 +92,33 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
 .policy-detail .interpret{line-height:1.7;}
 .policy-detail .interpret strong{color:var(--yellow);}
 
-/* Fishbone Timeline */
-.fishbone-wrap{overflow-x:auto;padding:20px 0;}
-.fishbone{position:relative;min-width:900px;padding:40px 0 60px;}
-.fishbone-spine{position:absolute;left:0;right:0;top:50%;height:3px;background:linear-gradient(90deg,var(--blue),var(--green),var(--orange),var(--red));border-radius:2px;transform:translateY(-50%);}
-.fishbone-years{display:flex;justify-content:space-between;position:relative;z-index:1;padding:0 10px;}
-.fishbone-year{text-align:center;position:relative;}
-.fishbone-year .yr{width:44px;height:44px;border-radius:50%;background:var(--card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9em;margin:0 auto;position:relative;z-index:2;}
-.fishbone-events{margin-top:8px;}
-.fishbone-event{position:relative;padding:6px 10px;margin:3px 0;font-size:.72em;border-radius:6px;cursor:pointer;transition:.2s;white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis;}
-.fishbone-event:hover{transform:scale(1.03);z-index:10;max-width:none;white-space:normal;overflow:visible;}
-.fishbone-event .tag{font-size:.75em;margin-right:3px;}
-.fishbone-connector{position:absolute;width:2px;background:var(--border);}
-.fishbone-year:nth-child(odd) .fishbone-events{margin-top:8px;}
-.fishbone-year:nth-child(even) .fishbone-events{margin-top:0;margin-bottom:8px;display:flex;flex-direction:column-reverse;}
-.fishbone-year:nth-child(even) .fishbone-event-row{display:flex;flex-direction:column-reverse;}
+
+/* Vertical Timeline */
+.timeline{position:relative;padding:0 0 0 28px;}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--blue),var(--green),var(--orange),var(--red));border-radius:1px;}
+.timeline-group{margin-bottom:28px;position:relative;}
+.timeline-year{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.timeline-year .dot{width:18px;height:18px;border-radius:50%;background:var(--blue);position:absolute;left:-33px;top:4px;border:3px solid var(--bg);z-index:2;}
+.timeline-year .yr-text{font-size:1.3em;font-weight:800;color:var(--text);}
+.timeline-year .yr-count{font-size:.75em;color:var(--muted);}
+.timeline-card{background:var(--card);border-radius:10px;padding:14px 18px;margin:6px 0;border:1px solid var(--border);cursor:pointer;transition:.15s;position:relative;overflow:hidden;}
+.timeline-card:hover{border-color:var(--blue);transform:translateX(3px);}
+.timeline-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;}
+.timeline-card.pl::before{background:#eab308;}
+.timeline-card.sd::before{background:var(--blue);}
+.timeline-card.cn::before{background:var(--green);}
+.timeline-card.op::before{background:var(--orange);}
+.timeline-card.gz::before{background:var(--red);}
+.timeline-card .card-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;}
+.timeline-card .card-txt{font-size:.88em;line-height:1.6;}
+.timeline-card .card-co{font-size:.78em;color:var(--yellow);margin-top:4px;}
+.timeline-card .card-pol{font-size:.72em;color:var(--muted);margin-top:2px;cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;}
+.timeline-card .card-detail{display:none;margin-top:10px;padding:12px;background:rgba(234,179,8,.06);border-radius:8px;border:1px solid rgba(234,179,8,.15);font-size:.82em;line-height:1.7;}
+.timeline-card .card-detail.show{display:block;}
+.timeline-card .card-detail .src{color:var(--muted);font-size:.8em;margin-bottom:6px;}
+.timeline-empty{text-align:center;padding:40px;color:var(--muted);}
+@media(max-width:768px){.timeline{padding-left:22px;}.timeline-year .dot{left:-27px;width:14px;height:14px;}}
+
 
 .fishbone-event.pl{background:rgba(234,179,8,.1);border-left:3px solid #eab308;}
 .fishbone-event.sd{background:var(--blue-bg);border-left:3px solid var(--blue);}
@@ -178,7 +190,7 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
     <button data-filter="op">🟠 运营/VPP</button>
     <button data-filter="gz">🔴 绿证/3060</button>
   </div>
-  <div class="fishbone-wrap"><div class="fishbone" id="fishbone"></div></div>
+  <div class="timeline" id="timelineContainer"></div>
 </div>
 
 <div class="tab" id="tab-insights">
@@ -460,37 +472,33 @@ const events = [
 
 function renderTimeline(filter='all'){
   const f=filter==='all'?events:events.filter(e=>e.t===filter);
-  const years=[...new Set(f.map(e=>e.y))].sort();
-  const fb=document.getElementById('fishbone');
-  
-  // Group events by year
+  if(f.length===0){document.getElementById('timelineContainer').innerHTML='<div class="timeline-empty">该分类下暂无事件</div>';return;}
+  const years=[...new Set(f.map(e=>e.y))].sort((a,b)=>b-a);
   const grouped={};
   years.forEach(y=>{grouped[y]=f.filter(e=>e.y===y);});
   
-  let html='<div class="fishbone-spine"></div><div class="fishbone-years">';
-  years.forEach((y,yi)=>{
+  const catLabel={pl:'📋 政策',sd:'🔵 售电',cn:'🟢 储能',op:'🟠 运营/VPP',gz:'🔴 绿证/3060'};
+  
+  let html='';
+  years.forEach(y=>{
     const evts=grouped[y];
-    html+=`<div class="fishbone-year"><div class="yr">${y}</div><div class="fishbone-events">`;
+    html+=`<div class="timeline-group"><div class="timeline-year"><div class="dot"></div><span class="yr-text">${y}</span><span class="yr-count">${evts.length} 条</span></div>`;
     evts.forEach((e,ei)=>{
       const cls=e.t||'';
-      const id='fb_'+y+'_'+ei;
-      const catTag=e.t==='pl'?'📋':e.t==='sd'?'🔵':e.t==='cn'?'🟢':e.t==='op'?'🟠':e.t==='gz'?'🔴':'';
-      html+=`<div class="fishbone-event ${cls}" onclick="document.getElementById('${id}').classList.toggle('show')" title="${e.txt.replace(/"/g,'&quot;')}">
-        ${catTag} ${e.txt.substring(0,30)}${e.txt.length>30?'…':''}
-        ${e.pol?' 📎':''}
-        ${e.co?' 🏢':''}
-        <div class="fishbone-detail" id="${id}">
-          ${e.pol?`<div class="src">📄 ${e.pol} · ${e.src||''}</div>`:''}
-          <p style="margin-bottom:6px;">${e.txt}</p>
-          ${e.co?`<p style="color:var(--yellow);font-size:.85em;">🏢 ${e.co}</p>`:''}
-          ${e.note?`<div class="interpret">${e.note}</div>`:''}
+      const id='tc_'+y+'_'+ei;
+      html+=`<div class="timeline-card ${cls}">
+        <div class="card-top">
+          <span class="tag ${cls==='pl'?'tag-cn':cls==='sd'?'tag-sd':cls==='cn'?'tag-cn':cls==='op'?'tag-op':cls==='gz'?'tag-gz':''}">${catLabel[cls]||''}</span>
+          ${e.pol?`<span class="card-pol" onclick="event.stopPropagation();document.getElementById('${id}').classList.toggle('show')">${e.pol} 📎</span>`:''}
         </div>
+        <div class="card-txt">${e.txt}</div>
+        ${e.co?`<div class="card-co">🏢 ${e.co}</div>`:''}
+        ${e.note?`<div class="card-detail" id="${id}"><div class="src">📄 政策来源：${e.src||''}</div><div class="interpret">${e.note}</div></div>`:''}
       </div>`;
     });
-    html+='</div></div>';
+    html+='</div>';
   });
-  html+='</div>';
-  fb.innerHTML=html;
+  document.getElementById('timelineContainer').innerHTML=html;
 }
 renderTimeline();
 
