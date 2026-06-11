@@ -24,16 +24,10 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
 .metric .label{font-size:.8em;color:var(--muted);margin-bottom:4px;}
 .metric .value{font-size:1.8em;font-weight:700;}
 .metric .change{font-size:.75em;margin-top:4px;}
-.metric{position:relative;}
 .metric .source-line{font-size:.65em;color:var(--muted);margin-top:6px;padding-top:6px;border-top:1px solid var(--border);}
-.metric .source-line{display:block;}
 .up{color:var(--green);}.down{color:var(--red);}
 .card{background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);margin-bottom:20px;}
 .card h3{font-size:1em;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-.timeline-row{display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
-.timeline-row .year{font-weight:700;font-size:1em;min-width:50px;color:var(--blue);}
-.timeline-row .content{flex:1;min-width:250px;}
-.timeline-row .content p{margin:2px 0;font-size:.9em;}
 .tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:.75em;font-weight:600;margin:2px 4px 2px 0;}
 .tag-sd{background:var(--blue-bg);color:var(--blue);}
 .tag-cn{background:var(--green-bg);color:var(--green);}
@@ -47,7 +41,7 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
 .insight .title{font-weight:700;margin-bottom:8px;font-size:.95em;}
 .insight .row{display:flex;gap:20px;flex-wrap:wrap;margin-top:10px;}
 .insight .col{flex:1;min-width:180px;}
-.insight .col .h{font-size:.75em;color:var(--muted);margin-bottom:4px;text-transform:uppercase;}
+.insight .col .h{font-size:.75em;color:var(--muted);margin-bottom:4px;}
 .insight .col .v{font-size:.85em;line-height:1.6;}
 .company-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
 .company-card{background:var(--card);border-radius:12px;padding:20px;border:1px solid var(--border);}
@@ -61,8 +55,8 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
 .sub-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
 .sub-nav button{padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-size:.85em;}
 .sub-nav button:hover,.sub-nav button.active{background:var(--orange-bg);color:var(--orange);border-color:var(--orange);}
-.sub-tab{display:none;}.sub-tab.active{display:block;}
-
+.learn-sub{display:none;}
+.learn-sub.active{display:block;}
 .glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;}
 .glossary-item{background:var(--card);border-radius:10px;padding:16px;border:1px solid var(--border);}
 .glossary-item .term{font-weight:700;font-size:.9em;margin-bottom:4px;}
@@ -93,9 +87,6 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
 .policy-detail .src{color:var(--muted);font-size:.8em;margin-bottom:8px;}
 .policy-detail .interpret{line-height:1.7;}
 .policy-detail .interpret strong{color:var(--yellow);}
-
-
-/* Vertical Timeline */
 .timeline{position:relative;padding:0 0 0 28px;}
 .timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--blue),var(--green),var(--orange),var(--red));border-radius:1px;}
 .timeline-group{margin-bottom:28px;position:relative;}
@@ -119,39 +110,12 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
 .timeline-card .card-detail.show{display:block;}
 .timeline-card .card-detail .src{color:var(--muted);font-size:.8em;margin-bottom:6px;}
 .timeline-empty{text-align:center;padding:40px;color:var(--muted);}
-@media(max-width:768px){.timeline{padding-left:22px;}.timeline-year .dot{left:-27px;width:14px;height:14px;}}
-
-
-.fishbone-event.pl{background:rgba(234,179,8,.1);border-left:3px solid #eab308;}
-.fishbone-event.sd{background:var(--blue-bg);border-left:3px solid var(--blue);}
-.fishbone-event.cn{background:var(--green-bg);border-left:3px solid var(--green);}
-.fishbone-event.op{background:var(--orange-bg);border-left:3px solid var(--orange);}
-.fishbone-event.gz{background:rgba(239,68,68,.1);border-left:3px solid var(--red);}
-
-/* Fishbone detail tooltip */
-.fishbone-detail{display:none;position:absolute;left:50%;transform:translateX(-50%);width:280px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;z-index:100;box-shadow:0 8px 32px rgba(0,0,0,.5);font-size:.85em;line-height:1.6;}
-.fishbone-detail.show{display:block;}
-.fishbone-detail .src{color:var(--muted);font-size:.8em;margin-bottom:8px;}
-.fishbone-detail .interpret{line-height:1.7;}
-.fishbone-detail .interpret strong{color:var(--yellow);}
-
-@media(max-width:768px){
-  .fishbone{min-width:auto;}
-  .fishbone-years{flex-direction:column;gap:12px;}
-  .fishbone-year{display:flex;align-items:flex-start;gap:12px;text-align:left;}
-  .fishbone-year .yr{flex-shrink:0;margin:0;}
-  .fishbone-events{margin-top:0!important;display:flex;flex-wrap:wrap;gap:4px;}
-  .fishbone-event{max-width:none;}
-  .fishbone-spine{display:none;}
-}
-
-@media(max-width:768px){header{flex-direction:column;align-items:flex-start;}nav{width:100%;overflow-x:auto;}.insight .row{flex-direction:column;}.calc-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){header{flex-direction:column;align-items:flex-start;}nav{width:100%;overflow-x:auto;}.insight .row{flex-direction:column;}.calc-grid{grid-template-columns:1fr;}.timeline{padding-left:22px;}.timeline-year .dot{left:-27px;width:14px;height:14px;}}
 </style>
 </head>
 <body>
-
 <header>
-  <div><h1>⚡ 新能源行业研究工具 <span style="font-size:.45em;color:var(--muted);">v2026.06.11-17</span></h1><div class="sub">CVC投行视角 · 售电 · 储能 · 微电网 · 虚拟电厂 · 绿证碳交易</div></div>
+  <div><h1>⚡ 新能源行业研究工具 <span style="font-size:.45em;color:var(--muted);">v2026.06.11-18</span></h1><div class="sub">CVC投行视角 · 售电 · 储能 · 微电网 · 虚拟电厂 · 绿证碳交易</div></div>
   <nav id="mainNav">
     <button class="active" data-tab="dashboard">📊 仪表盘</button>
     <button data-tab="timeline">📅 时间轴</button>
@@ -160,33 +124,21 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
     <button data-tab="learn">📖 入门指南</button>
   </nav>
 </header>
-
 <main>
 <div class="tab active" id="tab-dashboard">
-  <div class="dashboard">
-<div class="metric"><div class="label">新型储能累计装机</div><div class="value">136 GW</div><div class="change up">▲ 5年增长40倍 (2020→2025)</div><div class="source-line">📄 国家能源局 · 2025年新型储能发展报告</div></div>
-<div class="metric"><div class="label">市场化交易电量</div><div class="value">10 万亿kWh</div><div class="change up">▲ 2030年预计占比70%</div><div class="source-line">📄 国家能源局 · 2025年全国电力市场交易报告</div></div>
-<div class="metric"><div class="label">绿电交易量</div><div class="value">3,285 亿kWh</div><div class="change up">▲ 同比增长38.3%</div><div class="source-line">📄 北京电力交易中心 · 2025年绿电交易年报</div></div>
-<div class="metric"><div class="label">售电CR5集中度</div><div class="value">98.26%</div><div class="change down">▼ 行业利润率降至1.96%</div><div class="source-line">📄 北极星电力网 · 2025售电行业年度报告</div></div>
-<div class="metric"><div class="label">电力交易员缺口</div><div class="value">95%</div><div class="change up">▲ 北京招量涨250%</div><div class="source-line">📄 北极星电力招聘 · 2026年6月数据</div></div>
-<div class="metric"><div class="label">取消固定电价省份</div><div class="value">27 省</div><div class="change up">▲ 15分钟现货定价全面落地</div><div class="source-line">📄 国家发改委 · 各省分时电价调整通知汇总</div></div>
-</div>
-<div class="signal-bar"><div class="signal"><div class="s-label">🔴 最新信号 · 2026.06</div><div class="s-value">1656号文 + 10号文</div><div class="s-note">电价全面市场化；EMC增值税优惠取消，合规趋严<div style="margin-top:4px;font-size:.85em;opacity:.7;">📄 发改能源规〔2025〕1656号 / 财税〔2026〕10号</div></div></div><div class="signal"><div class="s-label">🟡 正在发生 · 正在发生</div><div class="s-value">代理交易爆发</div><div class="s-note">15分钟电价催生AI交易需求；储能售电光伏全需要代理交易能力<div style="margin-top:4px;font-size:.85em;opacity:.7;">📄 北极星电力网 · 2026年6月行业分析</div></div></div><div class="signal"><div class="s-label">🟢 投资风向 · 投资风向</div><div class="s-value">工业微电网EMC</div><div class="s-note">四份文件定调EMC从鼓励变必须；工厂节能改造躲不掉<div style="margin-top:4px;font-size:.85em;opacity:.7;">📄 工信部等五部门 · 工业绿色微电网建设指南(2026-2030)</div></div></div></div>
+  <div class="dashboard"><div class="metric"><div class="label">新型储能累计装机</div><div class="value">136 GW</div><div class="change up">▲ 5年增长40倍 (2020→2025)</div><div class="source-line">📄 国家能源局 · 2025年新型储能发展报告</div></div><div class="metric"><div class="label">市场化交易电量</div><div class="value">10 万亿kWh</div><div class="change up">▲ 2030年预计占比70%</div><div class="source-line">📄 国家能源局 · 2025年全国电力市场交易报告</div></div><div class="metric"><div class="label">绿电交易量</div><div class="value">3,285 亿kWh</div><div class="change up">▲ 同比增长38.3%</div><div class="source-line">📄 北京电力交易中心 · 2025年绿电交易年报</div></div><div class="metric"><div class="label">售电CR5集中度</div><div class="value">98.26%</div><div class="change down">▼ 行业利润率降至1.96%</div><div class="source-line">📄 北极星电力网 · 2025售电行业年度报告</div></div><div class="metric"><div class="label">电力交易员缺口</div><div class="value">95%</div><div class="change up">▲ 北京招量涨250%</div><div class="source-line">📄 北极星电力招聘 · 2026年6月数据</div></div><div class="metric"><div class="label">取消固定电价省份</div><div class="value">27 省</div><div class="change up">▲ 15分钟现货定价全面落地</div><div class="source-line">📄 国家发改委 · 各省分时电价调整通知汇总</div></div></div>
+  <div class="signal-bar"><div class="signal"><div class="s-label">🔴 最新信号 · 2026.06</div><div class="s-value">1656号文 + 10号文</div><div class="s-note">电价全面市场化；EMC增值税优惠取消，合规趋严<div style="margin-top:4px;font-size:.85em;opacity:.7;">📄 发改能源规〔2025〕1656号 / 财税〔2026〕10号</div></div></div><div class="signal"><div class="s-label">🟡 正在发生 · 正在发生</div><div class="s-value">代理交易爆发</div><div class="s-note">15分钟电价催生AI交易需求；储能售电光伏全需要代理交易能力<div style="margin-top:4px;font-size:.85em;opacity:.7;">📄 北极星电力网 · 2026年6月行业分析</div></div></div><div class="signal"><div class="s-label">🟢 投资风向 · 投资风向</div><div class="s-value">工业微电网EMC</div><div class="s-note">四份文件定调EMC从鼓励变必须；工厂节能改造躲不掉<div style="margin-top:4px;font-size:.85em;opacity:.7;">📄 工信部等五部门 · 工业绿色微电网建设指南(2026-2030)</div></div></div></div>
   <div class="card"><h3>三条赛道 · 当前状态</h3>
     <div class="chart-row">
       <div style="background:var(--blue-bg);border-radius:12px;padding:16px;"><strong style="color:var(--blue);">🔵 售电</strong><p style="font-size:.85em;margin-top:8px;">价差模式已死。综合能源转型+代理交易是出路。CR5垄断但利润薄，新进入者做代理交易比拿牌照更现实。</p></div>
       <div style="background:var(--green-bg);border-radius:12px;padding:16px;"><strong style="color:var(--green);">🟢 储能</strong><p style="font-size:.85em;margin-top:8px;">锂电绝对主导(96%)。钠电拐点已至(2025量产)。取消强配后市场化，容量电价兜底。AI调度能力决定收益。</p></div>
-      <div style="background:var(--orange-bg);border-radius:12px;padding:16px;"><strong style="color:var(--orange);">🟠 运营（平台/交易）</strong><p style="font-size:.85em;margin-top:8px;">EMC二次起飞+ VPP合法化+ 代理交易爆发+ 碳资产运营起步。2026是运营赛道元年。</p></div>
+      <div style="background:var(--orange-bg);border-radius:12px;padding:16px;"><strong style="color:var(--orange);">🟠 运营</strong><p style="font-size:.85em;margin-top:8px;">EMC二次起飞+ VPP合法化+ 代理交易爆发+ 碳资产运营起步。2026是运营赛道元年。</p></div>
     </div>
-  
   </div>
-</div>
 </div>
 
 <div class="tab" id="tab-timeline">
-  <div class="filter-bar" id="filterBarYear" style="margin-bottom:8px;">
-    <button class="active" data-year="all">📅 全部年份</button>
-  </div>
+  <div class="filter-bar" id="filterBarYear" style="margin-bottom:8px;"><button class="active" data-year="all">📅 全部年份</button></div>
   <div class="filter-bar" id="filterBar">
     <button class="active" data-filter="all">全部</button>
     <button data-filter="pl">📋 政策</button>
@@ -196,84 +148,6 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
     <button data-filter="gz">🔴 绿证/3060</button>
   </div>
   <div class="timeline" id="timelineContainer"></div>
-  </div>
-  <div class="sub-tab-co" id="sub-co-supplychain">
-    <div style="margin-bottom:18px;">
-      <h4 style="color:var(--orange);margin-bottom:8px;font-size:.92em;">上游 · 正极材料</h4>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;"><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
-          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">层状氧化物</div>
-          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 中科海钠 · 钠创新能源 · 宁德时代</div>
-          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">量产领先，宁德钠新已装车</div>
-          <div style="font-size:.7em;color:var(--muted);">能量密度最高，工艺最成熟</div>
-        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
-          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">聚阴离子</div>
-          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 鹏辉能源 · 众钠能源 · 珈钠能源</div>
-          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">循环寿命长，2025起量产加速</div>
-          <div style="font-size:.7em;color:var(--muted);">适合长时储能场景</div>
-        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
-          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">普鲁士蓝/白</div>
-          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 宁德时代（二代） · 汉行科技</div>
-          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">成本最低，但结构稳定性待验证</div>
-          <div style="font-size:.7em;color:var(--muted);">理论成本比层状低30%</div>
-        </div></div>
-    </div><div style="margin-bottom:18px;">
-      <h4 style="color:var(--orange);margin-bottom:8px;font-size:.92em;">上游 · 负极材料</h4>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;"><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
-          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">硬碳</div>
-          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 佰思格 · 杉杉股份 · 贝特瑞</div>
-          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">国产化率>80%，成本降至5-8万/吨</div>
-          <div style="font-size:.7em;color:var(--muted);">主流路线，生物质前驱体</div>
-        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
-          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">软碳</div>
-          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 中科海钠</div>
-          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">中科海钠自研，无定形碳负极</div>
-          <div style="font-size:.7em;color:var(--muted);">与层状氧化物正极配对</div>
-        </div></div>
-    </div><div style="margin-bottom:18px;">
-      <h4 style="color:var(--orange);margin-bottom:8px;font-size:.92em;">中游 · 电芯与系统</h4>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;"><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
-          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">电芯制造</div>
-          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 宁德时代 · 中科海钠 · 钠创新能源 · 比亚迪 · 鹏辉能源</div>
-          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">宁德60GWh订单领跑；中科海钠1GWh产线满产</div>
-          <div style="font-size:.7em;color:var(--muted);">2026年全行业产能规划超100GWh</div>
-        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
-          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">BMS/PCS</div>
-          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 华为数字能源 · 阳光电源 · 科华数据</div>
-          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">钠电专用BMS适配中，目前多沿用锂电方案</div>
-          <div style="font-size:.7em;color:var(--muted);">钠电电压平台不同，BMS需重新开发</div>
-        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
-          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">系统集成</div>
-          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 中钠能源 · 国电投 · 三峡能源</div>
-          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">铁岭100MW/200MWh钠电站签约</div>
-          <div style="font-size:.7em;color:var(--muted);">东北首批百兆瓦级钠电共享储能</div>
-        </div></div>
-    </div><div style="margin-bottom:18px;">
-      <h4 style="color:var(--orange);margin-bottom:8px;font-size:.92em;">下游 · 应用场景</h4>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;"><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
-          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">高寒储能</div>
-          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 铁岭100MW · 洪湖200MWh · 佳木斯基地</div>
-          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">-40℃可用，锂电做不到的独占场景</div>
-          <div style="font-size:.7em;color:var(--muted);">东北/内蒙/青藏，1/3国土冬季<-20℃</div>
-        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
-          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">工商业储能</div>
-          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 浙江/广东试点项目</div>
-          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">峰谷套利+需量管理，2026起放量</div>
-          <div style="font-size:.7em;color:var(--muted);">成本比锂电低20-30%，回本更快</div>
-        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
-          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">两轮车/低速车</div>
-          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 雅迪 · 爱玛 · 台铃</div>
-          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">钠电两轮车2025上市，成本是锂电的60%</div>
-          <div style="font-size:.7em;color:var(--muted);">替代铅酸的最大市场</div>
-        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
-          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">启停电源</div>
-          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 骆驼股份 · 风帆股份</div>
-          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">-40℃冷启动优势，柴油重卡/工程机械刚需</div>
-          <div style="font-size:.7em;color:var(--muted);">单台价值量不高但体量巨大</div>
-        </div></div>
-    </div>
-    <div class="card" style="margin-top:16px;padding:16px;"><h3 style="font-size:.9em;">⭐ 产业链关键玩家</h3></div>
-    <div class="company-grid"><div class="company-card"><div class="name">宁德时代</div><div class="type">全产业链龙头</div><div class="info">2025钠新量产→2026 60GWh订单→二代普鲁士蓝研发中</div></div><div class="company-card"><div class="name">中科海钠</div><div class="type">技术先行者</div><div class="info">中科院背景，层状氧化物+软碳路线，1GWh产线满产</div></div><div class="company-card"><div class="name">钠创新能源</div><div class="type">正极材料专精</div><div class="info">层状氧化物正极出货量领先，绑定多家电芯厂</div></div><div class="company-card"><div class="name">比亚迪</div><div class="type">全产业链布局</div><div class="info">自研钠电用于储能+两轮车，2026产能爬坡</div></div><div class="company-card"><div class="name">华为数字能源</div><div class="type">系统集成/PCS</div><div class="info">钠电专用PCS适配+AI调度，高寒场景系统方案</div></div></div>
-  </div>
 </div>
 
 <div class="tab" id="tab-insights">
@@ -286,358 +160,115 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
 </div>
 
 <div class="tab" id="tab-companies">
-  <div class="sub-nav" id="companyNav" style="margin-bottom:16px;">
-    <button class="active" data-sub-co="giants">🏢 跨界巨头</button>
-    <button data-sub-co="supplychain">🔗 钠电产业链</button>
-  </div>
-  <div class="sub-tab-co active" id="sub-co-giants">
+  <div class="card"><h3>🏢 跨界巨头 & 行业龙头</h3></div>
   <div class="company-grid"><div class="company-card"><div class="name">宁德时代</div><div class="type">储能龙头 · 2017入局</div><div class="info">2025"钠新"钠电池量产；2026获60GWh订单；天恒储能系统发布<br><span style="color:var(--muted);font-size:.8em;">全球储能电芯市占>40%</span></div></div><div class="company-card"><div class="name">华为数字能源</div><div class="type">跨界巨头 · 2018入局</div><div class="info">逆变器全球出货第一；布局VPP聚合平台；AI调度系统商用<br><span style="color:var(--muted);font-size:.8em;">用ICT技术重构能源行业</span></div></div><div class="company-card"><div class="name">蚂蚁集团</div><div class="type">跨界巨头 · 2024入局</div><div class="info">与协鑫合资"蚂蚁鑫能"；1600万台设备接入；EnergyTS 3.0 AI预测准确率94%+<br><span style="color:var(--muted);font-size:.8em;">区块链+AI=能源交易信任层</span></div></div><div class="company-card"><div class="name">滴滴（小桔能源）</div><div class="type">跨界巨头 · 2025入局</div><div class="info">从充电桩切入电力交易；布局零售代理交易<br><span style="color:var(--muted);font-size:.8em;">出行数据+电力交易=精准负荷预测</span></div></div><div class="company-card"><div class="name">京东</div><div class="type">跨界巨头 · 2025入局</div><div class="info">拿下售电牌照；可做电力批发+零售<br><span style="color:var(--muted);font-size:.8em;">电商平台撮合能力迁移至电力交易</span></div></div><div class="company-card"><div class="name">协鑫能科</div><div class="type">能源龙头 · 2023入局</div><div class="info">可调负荷550MW；与蚂蚁合资布局VPP<br><span style="color:var(--muted);font-size:.8em;">民营能源巨头跨界数字化</span></div></div><div class="company-card"><div class="name">五大六小集团</div><div class="type">国家队 · 2015入局</div><div class="info">CR5售电市场份额98.26%；全面布局储能+微电网+VPP<br><span style="color:var(--muted);font-size:.8em;">制度红利最大受益者，利润最厚</span></div></div><div class="company-card"><div class="name">正泰安能</div><div class="type">民营新势力 · 2020入局</div><div class="info">抖音获客800+咨询/3月；居间人模式跑通<br><span style="color:var(--muted);font-size:.8em;">渠道创新+EMC模式代表</span></div></div></div>
+  <div class="card" style="margin-top:24px;"><h3>🔗 钠离子电池产业链</h3></div>
+  <div style="margin-bottom:18px;"><h4 style="color:var(--orange);margin-bottom:8px;">上游 · 正极材料</h4><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;"><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;"><div style="font-weight:700;font-size:.88em;margin-bottom:3px;">层状氧化物</div><div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 中科海钠 · 钠创新能源 · 宁德时代</div><div style="font-size:.75em;color:var(--green);margin-bottom:2px;">量产领先，宁德钠新已装车</div><div style="font-size:.7em;color:var(--muted);">能量密度最高，工艺最成熟</div></div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;"><div style="font-weight:700;font-size:.88em;margin-bottom:3px;">聚阴离子</div><div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 鹏辉能源 · 众钠能源 · 珈钠能源</div><div style="font-size:.75em;color:var(--green);margin-bottom:2px;">循环寿命长，2025起量产加速</div><div style="font-size:.7em;color:var(--muted);">适合长时储能场景</div></div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;"><div style="font-weight:700;font-size:.88em;margin-bottom:3px;">普鲁士蓝/白</div><div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 宁德时代（二代） · 汉行科技</div><div style="font-size:.75em;color:var(--green);margin-bottom:2px;">成本最低，但结构稳定性待验证</div><div style="font-size:.7em;color:var(--muted);">理论成本比层状低30%</div></div></div></div><div style="margin-bottom:18px;"><h4 style="color:var(--orange);margin-bottom:8px;">上游 · 负极材料</h4><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;"><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;"><div style="font-weight:700;font-size:.88em;margin-bottom:3px;">硬碳</div><div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 佰思格 · 杉杉股份 · 贝特瑞</div><div style="font-size:.75em;color:var(--green);margin-bottom:2px;">国产化率>80%，成本降至5-8万/吨</div><div style="font-size:.7em;color:var(--muted);">主流路线，生物质前驱体</div></div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;"><div style="font-weight:700;font-size:.88em;margin-bottom:3px;">软碳</div><div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 中科海钠</div><div style="font-size:.75em;color:var(--green);margin-bottom:2px;">中科海钠自研，无定形碳负极</div><div style="font-size:.7em;color:var(--muted);">与层状氧化物正极配对</div></div></div></div><div style="margin-bottom:18px;"><h4 style="color:var(--orange);margin-bottom:8px;">中游 · 电芯与系统</h4><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;"><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;"><div style="font-weight:700;font-size:.88em;margin-bottom:3px;">电芯制造</div><div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 宁德时代 · 中科海钠 · 钠创新能源 · 比亚迪 · 鹏辉能源</div><div style="font-size:.75em;color:var(--green);margin-bottom:2px;">宁德60GWh订单领跑；中科海钠1GWh产线满产</div><div style="font-size:.7em;color:var(--muted);">2026年全行业产能规划超100GWh</div></div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;"><div style="font-weight:700;font-size:.88em;margin-bottom:3px;">BMS/PCS</div><div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 华为数字能源 · 阳光电源 · 科华数据</div><div style="font-size:.75em;color:var(--green);margin-bottom:2px;">钠电专用BMS适配中，目前多沿用锂电方案</div><div style="font-size:.7em;color:var(--muted);">钠电电压平台不同，BMS需重新开发</div></div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;"><div style="font-weight:700;font-size:.88em;margin-bottom:3px;">系统集成</div><div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 中钠能源 · 国电投 · 三峡能源</div><div style="font-size:.75em;color:var(--green);margin-bottom:2px;">铁岭100MW/200MWh钠电站签约</div><div style="font-size:.7em;color:var(--muted);">东北首批百兆瓦级钠电共享储能</div></div></div></div><div style="margin-bottom:18px;"><h4 style="color:var(--orange);margin-bottom:8px;">下游 · 应用场景</h4><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;"><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;"><div style="font-weight:700;font-size:.88em;margin-bottom:3px;">高寒储能</div><div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 铁岭100MW · 洪湖200MWh · 佳木斯基地</div><div style="font-size:.75em;color:var(--green);margin-bottom:2px;">-40℃可用，锂电做不到的独占场景</div><div style="font-size:.7em;color:var(--muted);">东北/内蒙/青藏，1/3国土冬季<-20℃</div></div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;"><div style="font-weight:700;font-size:.88em;margin-bottom:3px;">工商业储能</div><div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 浙江/广东试点项目</div><div style="font-size:.75em;color:var(--green);margin-bottom:2px;">峰谷套利+需量管理，2026起放量</div><div style="font-size:.7em;color:var(--muted);">成本比锂电低20-30%，回本更快</div></div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;"><div style="font-weight:700;font-size:.88em;margin-bottom:3px;">两轮车/低速车</div><div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 雅迪 · 爱玛 · 台铃</div><div style="font-size:.75em;color:var(--green);margin-bottom:2px;">钠电两轮车2025上市，成本是锂电的60%</div><div style="font-size:.7em;color:var(--muted);">替代铅酸的最大市场</div></div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;"><div style="font-weight:700;font-size:.88em;margin-bottom:3px;">启停电源</div><div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 骆驼股份 · 风帆股份</div><div style="font-size:.75em;color:var(--green);margin-bottom:2px;">-40℃冷启动优势，柴油重卡/工程机械刚需</div><div style="font-size:.7em;color:var(--muted);">单台价值量不高但体量巨大</div></div></div></div>
+  <div class="card" style="margin-top:20px;padding:16px;"><h3 style="font-size:.9em;">⭐ 产业链关键玩家</h3></div>
+  <div class="company-grid"><div class="company-card"><div class="name">宁德时代</div><div class="type">全产业链龙头</div><div class="info">2025钠新量产→2026 60GWh订单→二代普鲁士蓝研发中</div></div><div class="company-card"><div class="name">中科海钠</div><div class="type">技术先行者</div><div class="info">中科院背景，层状氧化物+软碳路线，1GWh产线满产</div></div><div class="company-card"><div class="name">钠创新能源</div><div class="type">正极材料专精</div><div class="info">层状氧化物正极出货量领先，绑定多家电芯厂</div></div><div class="company-card"><div class="name">比亚迪</div><div class="type">全产业链布局</div><div class="info">自研钠电用于储能+两轮车，2026产能爬坡</div></div><div class="company-card"><div class="name">华为数字能源</div><div class="type">系统集成/PCS</div><div class="info">钠电专用PCS适配+AI调度，高寒场景系统方案</div></div></div>
 </div>
 
 <div class="tab" id="tab-learn">
   <div class="sub-nav" id="learnNav">
-    <button class="active" data-sub="path">🗺 学习路径</button>
-    <button data-sub="jargon">📝 行业黑话</button>
-    <button data-sub="tech">🔧 技术名词</button>
-    <button data-sub="formula">📐 计量与公式</button>
-    <button data-sub="calc">🧮 工厂省电计算器</button>
-    <button data-sub="roi">💰 投资回报计算器</button>
+    <button class="active" data-ls="path">🗺 学习路径</button>
+    <button data-ls="jargon">📝 行业黑话</button>
+    <button data-ls="tech">🔧 技术名词</button>
+    <button data-ls="formula">📐 计量与公式</button>
+    <button data-ls="calc">🧮 工厂省电计算器</button>
+    <button data-ls="roi">💰 投资回报计算器</button>
   </div>
-  <div class="sub-tab active" id="sub-path"><div class="card"><h3>🗺 刚入行？按这个顺序看</h3>
+  <div class="learn-sub active" id="ls-path"><div class="card"><h3>🗺 刚入行？按这个顺序看</h3>
     <div class="path-step"><div class="num">1</div><div class="desc"><strong>先理解行业格局：</strong>电网是"快递"（送电的），售电公司是"商家"（卖电的）。发电→输配→售电→用户，四个环节。电改就是把售电环节从电网手里拿出来，让市场竞价。</div></div>
     <div class="path-step"><div class="num">2</div><div class="desc"><strong>再理解EMC：</strong>工厂不想掏钱建光伏储能 → 投资方全额出资 → 省下的电费双方分成。EMC是让"0投入建微电网"成立的金融工具。</div></div>
     <div class="path-step"><div class="num">3</div><div class="desc"><strong>然后理解为什么需要AI：</strong>电价每15分钟变一次，光伏发电看天气，工厂用电看生产。三个变量都在波动，人工算不过来。AI做三件事：预测负荷+预测光伏出力+预测电价→给出最优调度策略。</div></div>
     <div class="path-step"><div class="num">4</div><div class="desc"><strong>最后理解2026年的机会：</strong><span style="color:var(--orange);">代理交易</span>。储能、售电、光伏——在15分钟电价时代都没有交易能力。帮他们做交易=帮他们赚钱。这是2026年最核心的四个字。</div></div>
   </div></div>
-  <div class="sub-tab" id="sub-jargon"><div class="card"><h3>📝 电力交易 · 行业黑话</h3></div><div class="glossary-grid">
+  <div class="learn-sub" id="ls-jargon"><div class="card"><h3>📝 电力交易 · 行业黑话</h3></div><div class="glossary-grid">
     <div class="glossary-item"><div class="term">中长期交易 <span class="cat tag-sd">售电</span></div><div class="def">电力期货/批发价。买卖双方提前按年/月签合同，价格锁定不涨。稳。</div></div>
     <div class="glossary-item"><div class="term">电力现货 <span class="cat tag-sd">售电</span></div><div class="def">临时买电卖电。市场供需定价格，像买菜，随行就市。</div></div>
     <div class="glossary-item"><div class="term">日前市场 <span class="cat tag-sd">售电</span></div><div class="def">明天用电今天提前锁。提前一天开展次日交易。</div></div>
     <div class="glossary-item"><div class="term">实时市场 <span class="cat tag-sd">售电</span></div><div class="def">用电当天的临门一脚。临近调度时刻做最后买卖。</div></div>
-    <div class="glossary-item"><div class="term">市场出清 <span class="cat tag-sd">售电</span></div><div class="def">调度机构根据供需平衡，用算法敲定最终交易量和价。</div></div>
-    <div class="glossary-item"><div class="term">节点电价 <span class="cat tag-sd">售电</span></div><div class="def">不同位置不同时段价格不同。电网堵不堵都影响，跟打车一个道理。</div></div>
     <div class="glossary-item"><div class="term">峰谷价差 <span class="cat tag-cn">储能</span></div><div class="def">高峰电价 - 低谷电价。储能靠这个套利。0.7元/kWh是经济性门槛。</div></div>
-    <div class="glossary-item"><div class="term">容量电价 <span class="cat tag-cn">储能</span></div><div class="def">建了储能，电网按容量给你发保底收入。躺着拿钱。2026年114号文确立。</div></div>
+    <div class="glossary-item"><div class="term">容量电价 <span class="cat tag-cn">储能</span></div><div class="def">建了储能，电网按容量给你发保底收入。2026年114号文确立。</div></div>
     <div class="glossary-item"><div class="term">辅助服务 <span class="cat tag-cn">储能</span></div><div class="def">帮电网调频、调峰、备用。储能做这些额外赚钱。</div></div>
     <div class="glossary-item"><div class="term">需求响应 <span class="cat tag-op">运营</span></div><div class="def">电网喊你少用电/多用电，你响应了就拿钱。虚拟电厂的核心收入之一。</div></div>
     <div class="glossary-item"><div class="term">代理交易 <span class="cat tag-op">运营</span></div><div class="def">帮没有交易能力的储能/售电/光伏方做电力交易。2026年爆发。</div></div>
     <div class="glossary-item"><div class="term">偏差考核 <span class="cat tag-sd">售电</span></div><div class="def">实际用电量 vs 预测用电量。准了奖励，偏了罚款。懂行的靠这个多赚30%。</div></div>
     <div class="glossary-item"><div class="term">EMC <span class="cat tag-op">运营</span></div><div class="def">合同能源管理。投资方出钱建光伏储能，工厂出屋顶。省了电费分钱。</div></div>
-    <div class="glossary-item"><div class="term">绿证 <span class="cat tag-gz">绿证</span></div><div class="def">1张绿证=1000度绿电的环境权益证明。2025获RE100国际认可。可以交易。</div></div>
+    <div class="glossary-item"><div class="term">绿证 <span class="cat tag-gz">绿证</span></div><div class="def">1张绿证=1000度绿电的环境权益证明。2025获RE100国际认可。</div></div>
     <div class="glossary-item"><div class="term">虚拟电厂VPP <span class="cat tag-op">运营</span></div><div class="def">软件平台，把分散的光伏储能充电桩聚合成一个"电厂"参与电力市场。</div></div>
-    <div class="glossary-item"><div class="term">微电网 <span class="cat tag-cn">储能</span></div><div class="def">分布式电源+储能+负荷+监控的小型电力系统。可以并网也可以孤岛运行。</div></div>
+    <div class="glossary-item"><div class="term">微电网 <span class="cat tag-cn">储能</span></div><div class="def">分布式电源+储能+负荷+监控的小型电力系统。可并网可孤岛运行。</div></div>
   </div></div>
-  <div class="sub-tab" id="sub-tech"><div class="card"><h3>🔧 技术名词 · 储能 & 光伏</h3></div><div class="glossary-grid">
+  <div class="learn-sub" id="ls-tech"><div class="card"><h3>🔧 技术名词 · 储能 & 光伏</h3></div><div class="glossary-grid">
     <div class="glossary-item"><div class="term">kW / MW / GW <span class="cat tag-cn">功率</span></div><div class="def">千瓦/兆瓦/吉瓦。功率单位。1MW=1000kW。</div></div>
     <div class="glossary-item"><div class="term">kWh / MWh <span class="cat tag-cn">电量</span></div><div class="def">度/千度。1kWh=1度电。储能容量按MWh算。</div></div>
-    <div class="glossary-item"><div class="term">磷酸铁锂 <span class="cat tag-cn">电池</span></div><div class="def">当前储能主流电池。循环寿命6000-8000次。成本0.6-0.8元/Wh。市占率>96%。</div></div>
+    <div class="glossary-item"><div class="term">磷酸铁锂 <span class="cat tag-cn">电池</span></div><div class="def">当前储能主流电池。循环寿命6000-8000次。成本0.6-0.8元/Wh。</div></div>
     <div class="glossary-item"><div class="term">钠离子电池 <span class="cat tag-cn">电池</span></div><div class="def">新型电池。原材料便宜40%，零下20°C能用。2025量产拐点。</div></div>
-    <div class="glossary-item"><div class="term">全钒液流 <span class="cat tag-cn">电池</span></div><div class="def">长时储能技术。适合4小时以上场景。安全性高、寿命25年。成本仍高。</div></div>
-    <div class="glossary-item"><div class="term">光伏组件 <span class="cat tag-cn">光伏</span></div><div class="def">太阳能电池板。当前主流功率550-700W/块。2026年价格约1.6元/W。</div></div>
+    <div class="glossary-item"><div class="term">全钒液流 <span class="cat tag-cn">电池</span></div><div class="def">长时储能技术。适合4小时以上场景。安全性高、寿命25年。</div></div>
+    <div class="glossary-item"><div class="term">光伏组件 <span class="cat tag-cn">光伏</span></div><div class="def">太阳能电池板。当前主流功率550-700W/块。</div></div>
     <div class="glossary-item"><div class="term">逆变器 <span class="cat tag-cn">光伏</span></div><div class="def">把光伏发的直流电变成交流电。华为全球出货量第一。</div></div>
-    <div class="glossary-item"><div class="term">PCS <span class="cat tag-cn">储能</span></div><div class="def">储能变流器。控制电池充放电。储能系统的核心设备之一。</div></div>
+    <div class="glossary-item"><div class="term">PCS <span class="cat tag-cn">储能</span></div><div class="def">储能变流器。控制电池充放电。储能系统核心设备之一。</div></div>
     <div class="glossary-item"><div class="term">BMS <span class="cat tag-cn">储能</span></div><div class="def">电池管理系统。监控每节电池的电压温度，防止过充过放。</div></div>
-    <div class="glossary-item"><div class="term">EMS <span class="cat tag-cn">储能</span></div><div class="def">能量管理系统。储能的大脑。决定什么时候充电、什么时候放电。AI加持。</div></div>
-    <div class="glossary-item"><div class="term">DOD <span class="cat tag-cn">储能</span></div><div class="def">充放电深度。比如100度电的储能，每次只用80度=DOD 80%。</div></div>
-    <div class="glossary-item"><div class="term">两充两放 <span class="cat tag-cn">储能</span></div><div class="def">一天充两次放两次。峰谷价差大时常用策略。需要精确预测峰谷时段。</div></div>
+    <div class="glossary-item"><div class="term">EMS <span class="cat tag-cn">储能</span></div><div class="def">能量管理系统。储能的大脑。决定什么时候充电放电。AI加持。</div></div>
+    <div class="glossary-item"><div class="term">DOD <span class="cat tag-cn">储能</span></div><div class="def">充放电深度。100度电的储能，每次只用80度=DOD 80%。</div></div>
+    <div class="glossary-item"><div class="term">两充两放 <span class="cat tag-cn">储能</span></div><div class="def">一天充两次放两次。峰谷价差大时常用策略。</div></div>
   </div></div>
-  <div class="sub-tab" id="sub-formula"><div class="card"><h3>📐 计量单位 & 常用计算公式</h3></div>
-    <div class="formula-card"><strong>光伏年发电量</strong><div class="formula">发电量(kWh) = 装机容量(kW) × 年利用小时数(h)</div><div class="explain">例：1MW(1000kW) × 1000h/年 = 100万度/年。各地不同：四川800-900h，新疆1400-1600h，江浙1000-1200h。</div></div>
-    <div class="formula-card"><strong>储能峰谷套利日收益</strong><div class="formula">日收益 = 电池容量(kWh) × DOD × 日循环次数 × (峰电价 - 谷电价) × 效率</div><div class="explain">例：2000kWh × 85% × 2次 × 0.6元价差 × 85%效率 = 1,734元/天。年收益≈52万。</div></div>
-    <div class="formula-card"><strong>需量管理年收益</strong><div class="formula">年收益 = 削减峰值(kVA) × 容量费单价(元/kVA/月) × 12月</div><div class="explain">例：储能削峰200kVA × 30元/kVA/月 × 12 = 7.2万/年。</div></div>
-    <div class="formula-card"><strong>光伏自发自用节省</strong><div class="formula">年节省 = 光伏发电量 × 自用比例 × 外购电价</div><div class="explain">例：100万度 × 40% × 0.8元/度 = 32万/年。自用比例越高越省钱。</div></div>
-    <div class="formula-card"><strong>EMC模式下工厂分成</strong><div class="formula">工厂年分成 = 项目总节省 × (10%-30%)</div><div class="explain">EMC头几年投资方拿大头(70-90%)回收成本。后期工厂分成比例逐步提升。</div></div>
+  <div class="learn-sub" id="ls-formula"><div class="card"><h3>📐 计量单位 & 常用计算公式</h3></div>
+    <div class="formula-card"><strong>光伏年发电量</strong><div class="formula">发电量(kWh) = 装机容量(kW) × 年利用小时数(h)</div><div class="explain">例：1MW(1000kW) × 1000h/年 = 100万度/年。</div></div>
+    <div class="formula-card"><strong>储能峰谷套利日收益</strong><div class="formula">日收益 = 电池容量(kWh) × DOD × 日循环次数 × (峰电价 - 谷电价) × 效率</div><div class="explain">例：2000kWh × 85% × 2次 × 0.6元价差 × 85% = 1,734元/天。</div></div>
+    <div class="formula-card"><strong>需量管理年收益</strong><div class="formula">年收益 = 削减峰值(kVA) × 容量费单价(元/kVA/月) × 12月</div><div class="explain">例：储能削峰200kVA × 30元 × 12 = 7.2万/年。</div></div>
+    <div class="formula-card"><strong>光伏自发自用节省</strong><div class="formula">年节省 = 光伏发电量 × 自用比例 × 外购电价</div><div class="explain">例：100万度 × 40% × 0.8元/度 = 32万/年。</div></div>
+    <div class="formula-card"><strong>EMC模式下工厂分成</strong><div class="formula">工厂年分成 = 项目总节省 × (10%-30%)</div><div class="explain">EMC头几年投资方拿大头回收成本。后期工厂分成比例逐步提升。</div></div>
     <div class="formula-card"><strong>储能回本周期</strong><div class="formula">回本(年) = 总投资 / (年峰谷套利 + 年需量管理 + 年辅助服务 + 年容量收入)</div><div class="explain">广东优质项目：200万投资，54万/年总收益 ≈ 3.7年回本。</div></div>
   </div>
-  <div class="sub-tab" id="sub-calc"><div class="card"><h3>🧮 工厂省电计算器 <span style="font-size:.75em;color:var(--muted);">估算仅供参考</span></h3></div><div class="calc-grid"><div>
-    <div class="input-group"><label>月用电量 (万度)</label><input type="number" id="monthlyKwh" placeholder="如：20" value="20" step="1"></div>
-    <div class="input-group"><label>平均电价 (元/度)</label><input type="number" id="avgPrice" placeholder="如：0.8" value="0.8" step="0.01"></div>
-    <div class="input-group"><label>可用屋顶面积 (㎡)</label><input type="number" id="roofArea" placeholder="如：5000" value="5000" step="100"></div>
-    <div class="input-group"><label>所在省份</label><select id="province"><option value="gd">广东</option><option value="zj">浙江</option><option value="js">江苏</option><option value="sd">山东</option><option value="sc">四川</option><option value="other">其他省份</option></select></div>
-    <div class="input-group"><label>EMC分成比例 (工厂端)</label><select id="emcSplit"><option value="0.2">20% (头几年)</option><option value="0.25" selected>25% (常见)</option><option value="0.3">30%</option></select></div>
+  <div class="learn-sub" id="ls-calc"><div class="card"><h3>🧮 工厂省电计算器</h3></div><div class="calc-grid"><div>
+    <div class="input-group"><label>月用电量 (万度)</label><input type="number" id="monthlyKwh" value="20"></div>
+    <div class="input-group"><label>平均电价 (元/度)</label><input type="number" id="avgPrice" value="0.8" step="0.01"></div>
+    <div class="input-group"><label>可用屋顶面积 (㎡)</label><input type="number" id="roofArea" value="5000"></div>
+    <div class="input-group"><label>所在省份</label><select id="province"><option value="gd">广东</option><option value="zj">浙江</option><option value="js">江苏</option><option value="sd">山东</option><option value="sc">四川</option><option value="other">其他</option></select></div>
+    <div class="input-group"><label>EMC分成比例 (工厂端)</label><select id="emcSplit"><option value="0.2">20%</option><option value="0.25" selected>25%</option><option value="0.3">30%</option></select></div>
     <button onclick="calculate()" style="width:100%;padding:14px;border-radius:10px;border:none;background:var(--orange);color:white;font-size:1em;font-weight:700;cursor:pointer;">💰 算一下能省多少</button>
-  </div><div class="calc-result" id="calcResult"><div style="color:var(--muted);font-size:.9em;">输入左侧数据，点击计算 →</div></div></div></div>
-  <div class="sub-tab" id="sub-roi"><div class="card"><h3>💰 投资回报计算器 <span style="font-size:.75em;color:var(--muted);">CVC投资人视角 · 估算仅供参考</span></h3></div><div class="calc-grid"><div>
-    <div class="input-group"><label>项目类型</label><select id="roiType" onchange="updateROIDefaults()"><option value="pv_storage">光伏+储能 (EMC模式)</option><option value="storage">纯储能 (独立储能)</option><option value="microgrid">微电网 (光储充一体)</option></select></div>
-    <div class="input-group"><label>总投资额 (万元)</label><input type="number" id="roiInvest" placeholder="如：500" value="500" step="10"></div>
-    <div class="input-group"><label>年总收益 (万元)</label><input type="number" id="roiAnnual" placeholder="如：120" value="120" step="1"></div>
-    <div class="input-group"><label>投资方分成比例</label><select id="roiSplit"><option value="0.7">70%</option><option value="0.8" selected>80% (优质项目)</option><option value="0.9">90%</option></select></div>
-    <div class="input-group"><label>合同年限 (年)</label><input type="number" id="roiYears" placeholder="如：25" value="25" step="1"></div>
+  </div><div class="calc-result" id="calcResult"><div style="color:var(--muted);">输入左侧数据，点击计算 →</div></div></div></div>
+  <div class="learn-sub" id="ls-roi"><div class="card"><h3>💰 投资回报计算器</h3></div><div class="calc-grid"><div>
+    <div class="input-group"><label>项目类型</label><select id="roiType" onchange="updateROIDefaults()"><option value="pv_storage">光伏+储能 (EMC)</option><option value="storage">纯储能</option><option value="microgrid">微电网</option></select></div>
+    <div class="input-group"><label>总投资额 (万元)</label><input type="number" id="roiInvest" value="500"></div>
+    <div class="input-group"><label>年总收益 (万元)</label><input type="number" id="roiAnnual" value="120"></div>
+    <div class="input-group"><label>投资方分成比例</label><select id="roiSplit"><option value="0.7">70%</option><option value="0.8" selected>80%</option><option value="0.9">90%</option></select></div>
+    <div class="input-group"><label>合同年限 (年)</label><input type="number" id="roiYears" value="25"></div>
     <div class="input-group"><label>分成递增</label><select id="roiEscalator"><option value="0">无递增</option><option value="1" selected>每5年+5%</option><option value="2">10年后工厂多拿</option></select></div>
-    <div class="input-group"><label>年运维成本 (万元)</label><input type="number" id="roiOpex" placeholder="如：8" value="8" step="1"></div>
+    <div class="input-group"><label>年运维成本 (万元)</label><input type="number" id="roiOpex" value="8"></div>
     <button onclick="calculateROI()" style="width:100%;padding:14px;border-radius:10px;border:none;background:var(--green);color:white;font-size:1em;font-weight:700;cursor:pointer;">📊 计算投资回报</button>
-  </div><div><div class="calc-result" id="roiResult" style="margin-bottom:16px;"><div style="color:var(--muted);font-size:.9em;">输入左侧数据，点击计算 →</div></div><div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);"><div style="font-size:.8em;color:var(--muted);margin-bottom:8px;">📈 年度现金流</div><div id="roiCashflow" style="font-size:.75em;color:var(--muted);">输入数据后自动生成</div></div></div></div></div>
+  </div><div><div class="calc-result" id="roiResult" style="margin-bottom:16px;"><div style="color:var(--muted);">输入左侧数据，点击计算 →</div></div><div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);"><div style="font-size:.8em;color:var(--muted);margin-bottom:8px;">📈 年度现金流</div><div id="roiCashflow" style="font-size:.75em;color:var(--muted);">输入数据后自动生成</div></div></div></div></div>
 </div>
 </main>
-
 <script>
-// Tab switching
-document.querySelectorAll('#mainNav button').forEach(btn=>{ btn.addEventListener('click',()=>{ document.querySelectorAll('#mainNav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+btn.dataset.tab).classList.add('active'); }); });
+document.querySelectorAll('#mainNav button').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('#mainNav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+btn.dataset.tab).classList.add('active');});});
 
-// Learn sub-tabs
-document.querySelectorAll('#learnNav button').forEach(btn=>{ btn.addEventListener('click',()=>{ document.querySelectorAll('#learnNav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.sub-tab').forEach(t=>t.classList.remove('active'));document.getElementById('sub-'+btn.dataset.sub).classList.add('active'); }); });
+document.querySelectorAll('#learnNav button').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('#learnNav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.learn-sub').forEach(t=>t.classList.remove('active'));document.getElementById('ls-'+btn.dataset.ls).classList.add('active');});});
 
-
-
-// Timeline data
-const events = [
-  {
-    "y": 2015,
-    "t": "pl",
-    "txt": "中发9号文：开启第二轮电改。\"放开两头、管住中间\"，售电侧市场化。",
-    "co": "",
-    "pol": "中发〔2015〕9号",
-    "src": "中共中央 国务院",
-    "note": "制度级改革。电网从此只做输配（快递），发电和售电交给市场。所有后续政策的基石。属方向性推进，不可逆转。",
-    "m": 3
-  },
-  {
-    "y": 2015,
-    "t": "pl",
-    "txt": "微电网示范指导意见发布。微电网概念首次进入国家政策。",
-    "co": "",
-    "pol": "国能新能〔2015〕265号",
-    "src": "国家能源局",
-    "note": "微电网首次获得政策身份。但此时只是\"示范\"，离产业化还有10年。",
-    "m": 7
-  },
-  {
-    "y": 2016,
-    "t": "sd",
-    "txt": "售电公司注册量爆发（5000+家）。广东率先集中竞价，价差可达0.13元/度。",
-    "co": "五大六发布局售电",
-    "m": 3
-  },
-  {
-    "y": 2017,
-    "t": "pl",
-    "txt": "首个储能指导意见出台。28个微电网示范项目公布。",
-    "co": "",
-    "pol": "发改能源〔2017〕号",
-    "src": "发改委/能源局",
-    "note": "储能首次获国家级政策身份。微电网从概念走向示范。",
-    "m": 10
-  },
-  {
-    "y": 2018,
-    "t": "sd",
-    "txt": "售电公司破万家，价差收窄至0.04元。竞争加剧。",
-    "co": "华为数字能源成立",
-    "m": 6
-  },
-  {
-    "y": 2019,
-    "t": "pl",
-    "txt": "绿证制度试点启动。可再生能源消纳保障机制出台。",
-    "co": "",
-    "pol": "——",
-    "src": "发改委/能源局",
-    "note": "绿证诞生。最初是\"自愿认购\"，交易清淡。爆发要等2025 RE100认可+2026碳市场扩围。",
-    "m": 1
-  },
-  {
-    "y": 2020,
-    "t": "pl",
-    "txt": "9月22日：习近平在联合国宣布3060双碳目标。",
-    "co": "宁德市值破万亿",
-    "pol": "——",
-    "src": "联合国大会",
-    "note": "根本性转折。此前能源政策是渐进改良，此后变成\"必须在倒计时内完成\"。未来40年的顶层逻辑。",
-    "m": 6
-  },
-  {
-    "y": 2020,
-    "t": "pl",
-    "txt": "双碳写入十四五规划和2035远景目标纲要。\"1+N\"体系启动。",
-    "co": "",
-    "pol": "——",
-    "src": "全国人大",
-    "note": "3060从政治承诺上升为国家法律。",
-    "m": 11
-  },
-  {
-    "y": 2021,
-    "t": "pl",
-    "txt": "强制配储政策出台：风光装机暴增，电网消纳不了。",
-    "co": "宁德储能出货全球第一",
-    "pol": "发改能源规〔2021〕号",
-    "src": "发改委/能源局",
-    "note": "问题倒逼型政策。用行政手段强行催熟储能市场。强制不是目的——2025市场成熟后就取消了。",
-    "m": 7
-  },
-  {
-    "y": 2021,
-    "t": "sd",
-    "txt": "煤价暴涨→批零倒挂→售电公司破产潮。《售电公司管理办法》明确退市标准。",
-    "co": "售电公司破产潮",
-    "m": 10
-  },
-  {
-    "y": 2022,
-    "t": "pl",
-    "txt": "\"十四五\"新型储能方案发布。锂价60万/吨倒逼钠电研发。",
-    "co": "宁德推出钠电方案",
-    "pol": "——",
-    "src": "发改委/能源局",
-    "note": "储能进入专项规划。原材料危机是技术路线切换的最大推手。",
-    "m": 6
-  },
-  {
-    "y": 2024,
-    "t": "pl",
-    "txt": "储能首次写入政府工作报告。虚拟电厂纳入市场经营主体。",
-    "co": "蚂蚁+协鑫合资\"蚂蚁鑫能\"",
-    "pol": "——",
-    "src": "国务院/发改委",
-    "note": "储能政策地位最高级。VPP从\"野生\"变\"合法\"——有了市场主体身份才能签合同参与交易。",
-    "m": 3
-  },
-  {
-    "y": 2024,
-    "t": "pl",
-    "txt": "\"主配微协同\"首次提出：微电网成为新型电力系统组成部分。",
-    "co": "",
-    "pol": "——",
-    "src": "发改委/能源局",
-    "note": "微电网从\"补充\"变\"协同\"。主网+配网+微网三网一体。",
-    "m": 6
-  },
-  {
-    "y": 2025,
-    "t": "pl",
-    "txt": "136号文取消强制配储。114号文建立容量电价。",
-    "co": "",
-    "pol": "发改能源〔2025〕136号 / 发改价格〔2026〕114号",
-    "src": "发改委",
-    "note": "方向性调整——市场成熟就放手。容量电价=储能保底收入，盈利模式确立。\"假配储\"退出，\"真需求\"留下。",
-    "m": 2
-  },
-  {
-    "y": 2025,
-    "t": "pl",
-    "txt": "绿证获RE100国际认可。碳市场扩围至钢铁水泥铝。",
-    "co": "京东拿售电牌照；滴滴切入售电",
-    "pol": "——",
-    "src": "RE100 / 生态环境部",
-    "note": "绿证国际化→出口企业绿电需求爆发。碳市场覆盖60%+碳排放。",
-    "m": 6
-  },
-  {
-    "y": 2025,
-    "t": "cn",
-    "txt": "钠电拐点：宁德时代\"钠新\"量产。新型储能累计136GW（5年40倍）。",
-    "co": "华为逆变器全球第一",
-    "m": 9
-  },
-  {
-    "y": 2026,
-    "t": "pl",
-    "txt": "碳排放双控取代能耗双控：用绿电工厂不受碳限制。",
-    "co": "",
-    "pol": "——",
-    "src": "国务院",
-    "note": "制度切换。光伏+储能从\"省钱\"变\"合规刚需\"。EMC需求爆发的底层逻辑。",
-    "m": 1
-  },
-  {
-    "y": 2026,
-    "t": "pl",
-    "txt": "1656号文：27省取消固定电价，15分钟现货定价落地。",
-    "co": "",
-    "pol": "发改能源规〔2025〕1656号",
-    "src": "发改委/能源局",
-    "note": "电价从行政定价→市场定价。利好有AI预测的交易团队，利空\"躺着赚钱\"的储能方。代理交易元年。",
-    "m": 3
-  },
-  {
-    "y": 2026,
-    "t": "pl",
-    "txt": "政府工作报告连续三年写入储能。2030年统一电力市场时间表明确。",
-    "co": "蚂蚁VPP接入1600万台设备",
-    "pol": "国办发〔2026〕4号",
-    "src": "国务院办公厅",
-    "note": "全国统一电力市场时间表首次明确——2030年。电力从省域割据走向全国一盘棋。",
-    "m": 3
-  },
-  {
-    "y": 2026,
-    "t": "pl",
-    "txt": "财税10号文：EMC增值税免税取消（16年红利终结）。",
-    "co": "",
-    "pol": "财税〔2026〕10号",
-    "src": "财政部/税务总局",
-    "note": "不是打压EMC，是规范行业。真正有运营能力的活下来，靠免税套利的出局。所得税优惠保留。",
-    "m": 6
-  },
-  {
-    "y": 2026,
-    "t": "pl",
-    "txt": "五部门《工业绿色微电网建设与应用指南(2026-2030)》。",
-    "co": "代理交易元年",
-    "pol": "——",
-    "src": "工信部等五部门",
-    "note": "微电网从\"示范\"(2017)→\"协同\"(2024)→\"全面推广\"(2026)。工厂建微电网变政策要求。",
-    "m": 6
-  }
-];
-
+const events = [{"y": 2015, "t": "pl", "txt": "中发9号文：开启第二轮电改。\"放开两头、管住中间\"，售电侧市场化。", "co": "", "pol": "中发〔2015〕9号", "src": "中共中央 国务院", "note": "制度级改革。电网从此只做输配（快递），发电和售电交给市场。所有后续政策的基石。属方向性推进，不可逆转。", "m": 3}, {"y": 2015, "t": "pl", "txt": "微电网示范指导意见发布。微电网概念首次进入国家政策。", "co": "", "pol": "国能新能〔2015〕265号", "src": "国家能源局", "note": "微电网首次获得政策身份。但此时只是\"示范\"，离产业化还有10年。", "m": 7}, {"y": 2016, "t": "sd", "txt": "售电公司注册量爆发（5000+家）。广东率先集中竞价，价差可达0.13元/度。", "co": "五大六发布局售电", "m": 3}, {"y": 2017, "t": "pl", "txt": "首个储能指导意见出台。28个微电网示范项目公布。", "co": "", "pol": "发改能源〔2017〕号", "src": "发改委/能源局", "note": "储能首次获国家级政策身份。微电网从概念走向示范。", "m": 10}, {"y": 2018, "t": "sd", "txt": "售电公司破万家，价差收窄至0.04元。竞争加剧。", "co": "华为数字能源成立", "m": 6}, {"y": 2019, "t": "pl", "txt": "绿证制度试点启动。可再生能源消纳保障机制出台。", "co": "", "pol": "——", "src": "发改委/能源局", "note": "绿证诞生。最初是\"自愿认购\"，交易清淡。爆发要等2025 RE100认可+2026碳市场扩围。", "m": 1}, {"y": 2020, "t": "pl", "txt": "9月22日：习近平在联合国宣布3060双碳目标。", "co": "宁德市值破万亿", "pol": "——", "src": "联合国大会", "note": "根本性转折。此前能源政策是渐进改良，此后变成\"必须在倒计时内完成\"。未来40年的顶层逻辑。", "m": 6}, {"y": 2020, "t": "pl", "txt": "双碳写入十四五规划和2035远景目标纲要。\"1+N\"体系启动。", "co": "", "pol": "——", "src": "全国人大", "note": "3060从政治承诺上升为国家法律。", "m": 11}, {"y": 2021, "t": "pl", "txt": "强制配储政策出台：风光装机暴增，电网消纳不了。", "co": "宁德储能出货全球第一", "pol": "发改能源规〔2021〕号", "src": "发改委/能源局", "note": "问题倒逼型政策。用行政手段强行催熟储能市场。强制不是目的——2025市场成熟后就取消了。", "m": 7}, {"y": 2021, "t": "sd", "txt": "煤价暴涨→批零倒挂→售电公司破产潮。《售电公司管理办法》明确退市标准。", "co": "售电公司破产潮", "m": 10}, {"y": 2022, "t": "pl", "txt": "\"十四五\"新型储能方案发布。锂价60万/吨倒逼钠电研发。", "co": "宁德推出钠电方案", "pol": "——", "src": "发改委/能源局", "note": "储能进入专项规划。原材料危机是技术路线切换的最大推手。", "m": 6}, {"y": 2024, "t": "pl", "txt": "储能首次写入政府工作报告。虚拟电厂纳入市场经营主体。", "co": "蚂蚁+协鑫合资\"蚂蚁鑫能\"", "pol": "——", "src": "国务院/发改委", "note": "储能政策地位最高级。VPP从\"野生\"变\"合法\"——有了市场主体身份才能签合同参与交易。", "m": 3}, {"y": 2024, "t": "pl", "txt": "\"主配微协同\"首次提出：微电网成为新型电力系统组成部分。", "co": "", "pol": "——", "src": "发改委/能源局", "note": "微电网从\"补充\"变\"协同\"。主网+配网+微网三网一体。", "m": 6}, {"y": 2025, "t": "pl", "txt": "136号文取消强制配储。114号文建立容量电价。", "co": "", "pol": "发改能源〔2025〕136号 / 发改价格〔2026〕114号", "src": "发改委", "note": "方向性调整——市场成熟就放手。容量电价=储能保底收入，盈利模式确立。\"假配储\"退出，\"真需求\"留下。", "m": 2}, {"y": 2025, "t": "pl", "txt": "绿证获RE100国际认可。碳市场扩围至钢铁水泥铝。", "co": "京东拿售电牌照；滴滴切入售电", "pol": "——", "src": "RE100 / 生态环境部", "note": "绿证国际化→出口企业绿电需求爆发。碳市场覆盖60%+碳排放。", "m": 6}, {"y": 2025, "t": "cn", "txt": "钠电拐点：宁德时代\"钠新\"量产。新型储能累计136GW（5年40倍）。", "co": "华为逆变器全球第一", "m": 9}, {"y": 2026, "t": "pl", "txt": "碳排放双控取代能耗双控：用绿电工厂不受碳限制。", "co": "", "pol": "——", "src": "国务院", "note": "制度切换。光伏+储能从\"省钱\"变\"合规刚需\"。EMC需求爆发的底层逻辑。", "m": 1}, {"y": 2026, "t": "pl", "txt": "1656号文：27省取消固定电价，15分钟现货定价落地。", "co": "", "pol": "发改能源规〔2025〕1656号", "src": "发改委/能源局", "note": "电价从行政定价→市场定价。利好有AI预测的交易团队，利空\"躺着赚钱\"的储能方。代理交易元年。", "m": 3}, {"y": 2026, "t": "pl", "txt": "政府工作报告连续三年写入储能。2030年统一电力市场时间表明确。", "co": "蚂蚁VPP接入1600万台设备", "pol": "国办发〔2026〕4号", "src": "国务院办公厅", "note": "全国统一电力市场时间表首次明确——2030年。电力从省域割据走向全国一盘棋。", "m": 3}, {"y": 2026, "t": "pl", "txt": "财税10号文：EMC增值税免税取消（16年红利终结）。", "co": "", "pol": "财税〔2026〕10号", "src": "财政部/税务总局", "note": "不是打压EMC，是规范行业。真正有运营能力的活下来，靠免税套利的出局。所得税优惠保留。", "m": 6}, {"y": 2026, "t": "pl", "txt": "五部门《工业绿色微电网建设与应用指南(2026-2030)》。", "co": "代理交易元年", "pol": "——", "src": "工信部等五部门", "note": "微电网从\"示范\"(2017)→\"协同\"(2024)→\"全面推广\"(2026)。工厂建微电网变政策要求。", "m": 6}];
+let currentFilter='all',currentYear='all';
 function renderTimeline(filter='all',year='all'){
-  let f=filter==='all'?events:events.filter(e=>e.t===filter);if(year!=='all'){f=f.filter(e=>e.y===parseInt(year));}
+  let f=filter==='all'?events:events.filter(e=>e.t===filter);
+  if(year!=='all') f=f.filter(e=>e.y===parseInt(year));
   if(f.length===0){document.getElementById('timelineContainer').innerHTML='<div class="timeline-empty">该分类下暂无事件</div>';return;}
   const years=[...new Set(f.map(e=>e.y))].sort((a,b)=>b-a);
-  const grouped={};
-  years.forEach(y=>{grouped[y]=f.filter(e=>e.y===y);});
-  
+  const grouped={};years.forEach(y=>{grouped[y]=f.filter(e=>e.y===y).sort((a,b)=>(a.m||6)-(b.m||6));});
   const catLabel={pl:'📋 政策',sd:'🔵 售电',cn:'🟢 储能',op:'🟠 运营/VPP',gz:'🔴 绿证/3060'};
-  
+  const mArr=['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
   let html='';
-  years.forEach(y=>{
-    const evts=grouped[y];
-    html+=`<div class="timeline-group"><div class="timeline-year"><div class="dot"></div><span class="yr-text">${y}</span><span class="yr-count">${evts.length} 条</span></div>`;
-    evts.forEach((e,ei)=>{
-      const cls=e.t||'';
-      const id='tc_'+y+'_'+ei;
-      const mArr=['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
-      const mStr=e.m?mArr[e.m]:'';
-      html+=`<div class="timeline-card ${cls}">
-        <div class="card-top">
-          <span style="font-size:.7em;color:var(--muted);min-width:28px;">${mStr}</span>
-          <span class="tag ${cls==='pl'?'tag-cn':cls==='sd'?'tag-sd':cls==='cn'?'tag-cn':cls==='op'?'tag-op':cls==='gz'?'tag-gz':''}">${catLabel[cls]||''}</span>
-          ${e.pol?`<span class="card-pol" onclick="event.stopPropagation();document.getElementById('${id}').classList.toggle('show')">${e.pol} 📎</span>`:''}
-        </div>
-        <div class="card-txt">${e.txt}</div>
-        ${e.co?`<div class="card-co">🏢 ${e.co}</div>`:''}
-        ${e.note?`<div class="card-detail" id="${id}"><div class="src">📄 政策来源：${e.src||''}</div><div class="interpret">${e.note}</div></div>`:''}
-      </div>`;
-    });
-    html+='</div>';
-  });
+  years.forEach(y=>{const evts=grouped[y];html+=`<div class="timeline-group"><div class="timeline-year"><div class="dot"></div><span class="yr-text">${y}</span><span class="yr-count">${evts.length} 条</span></div>`;evts.forEach((e,ei)=>{const cls=e.t||'',id='tc_'+y+'_'+ei,ms=e.m?mArr[e.m]:'';html+=`<div class="timeline-card ${cls}"><div class="card-top"><span style="font-size:.7em;color:var(--muted);min-width:28px;">${ms}</span><span class="tag ${cls==='pl'?'tag-cn':cls==='sd'?'tag-sd':cls==='cn'?'tag-cn':cls==='op'?'tag-op':cls==='gz'?'tag-gz':''}">${catLabel[cls]||''}</span>${e.pol?'<span class="card-pol" onclick="event.stopPropagation();document.getElementById(\''+id+'\').classList.toggle(\'show\')">'+e.pol+' 📎</span>':''}</div><div class="card-txt">${e.txt}</div>${e.co?'<div class="card-co">🏢 '+e.co+'</div>':''}${e.note?'<div class="card-detail" id="'+id+'"><div class="src">📄 政策来源：'+e.src+'</div><div class="interpret">'+e.note+'</div></div>':''}</div>`;});html+='</div>';});
   document.getElementById('timelineContainer').innerHTML=html;
 }
-// Generate year buttons
-const years=[...new Set(events.map(e=>e.y))].sort((a,b)=>b-a);
-const yb=document.getElementById('filterBarYear');
-years.forEach(y=>{const b=document.createElement('button');b.dataset.year=y;b.textContent=y;b.addEventListener('click',()=>{document.querySelectorAll('#filterBarYear button').forEach(x=>x.classList.remove('active'));b.classList.add('active');currentYear=y;renderTimeline(currentFilter,currentYear);});yb.appendChild(b);});
-renderTimeline();
-
-let currentFilter='all',currentYear='all';
+const yrBtns=document.getElementById('filterBarYear');
+[...new Set(events.map(e=>e.y))].sort((a,b)=>b-a).forEach(y=>{const b=document.createElement('button');b.dataset.year=y;b.textContent=y;b.addEventListener('click',()=>{document.querySelectorAll('#filterBarYear button').forEach(x=>x.classList.remove('active'));b.classList.add('active');currentYear=y;renderTimeline(currentFilter,currentYear);});yrBtns.appendChild(b);});
 document.querySelectorAll('#filterBar button').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('#filterBar button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentFilter=btn.dataset.filter;renderTimeline(currentFilter,currentYear);});});
 document.querySelectorAll('#filterBarYear button').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('#filterBarYear button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentYear=btn.dataset.year;renderTimeline(currentFilter,currentYear);});});
+renderTimeline();
 
-// Calculator
-function calculate(){
-  const monthly=parseFloat(document.getElementById('monthlyKwh').value)||20,price=parseFloat(document.getElementById('avgPrice').value)||0.8,roof=parseFloat(document.getElementById('roofArea').value)||5000,province=document.getElementById('province').value,emc=parseFloat(document.getElementById('emcSplit').value)||0.25;
-  const spreads={gd:0.72,zj:0.52,js:0.55,sd:0.50,sc:0.40,other:0.45},sunHours={gd:1100,zj:1050,js:1050,sd:1200,sc:900,other:1000};
-  const solarKw=Math.round(roof*0.6/7),solarGen=solarKw*sunHours[province],selfUse=solarGen*0.4,solarSave=selfUse*price;
-  const storageKwh=Math.round(solarKw*0.5*2),dailyArb=storageKwh*0.85*1.5*spreads[province]*0.85,annualArb=dailyArb*330,demandSave=solarKw*0.1*30*12;
-  const totalSave=Math.round(solarSave+annualArb+demandSave),factoryShare=Math.round(totalSave*emc);
-  document.getElementById('calcResult').innerHTML=`<div style="font-size:.8em;color:var(--muted);">工厂年总节省（项目端）</div><div class="big">${totalSave.toLocaleString()} 万/年</div><div class="breakdown"><span>☀ 光伏自发自用：${Math.round(solarSave).toLocaleString()} 万</span><br><span>🔋 储能峰谷套利：${Math.round(annualArb).toLocaleString()} 万</span><br><span>⚡ 需量管理：${Math.round(demandSave).toLocaleString()} 万</span><br><span style="color:var(--orange);">🏭 EMC模式你分到(×${Math.round(emc*100)}%)：<strong>${factoryShare.toLocaleString()} 万/年</strong></span></div><div style="font-size:.75em;color:var(--muted);margin-top:10px;">建议光伏：<strong>${solarKw} kW</strong> · 建议储能：<strong>${storageKwh} kWh</strong><br>该省峰谷价差约 <strong>${spreads[province]} 元/kWh</strong></div>`;
-}
-
-// ROI Calculator
+function calculate(){const m=parseFloat(document.getElementById('monthlyKwh').value)||20,p=parseFloat(document.getElementById('avgPrice').value)||0.8,r=parseFloat(document.getElementById('roofArea').value)||5000,pv=document.getElementById('province').value,em=parseFloat(document.getElementById('emcSplit').value)||0.25;const ss={gd:0.72,zj:0.52,js:0.55,sd:0.50,sc:0.40,other:0.45},sh={gd:1100,zj:1050,js:1050,sd:1200,sc:900,other:1000};const sk=Math.round(r*0.6/7),sg=sk*sh[pv],su=sg*0.4,ssa=su*p;const st=Math.round(sk*0.5*2),da=st*0.85*1.5*ss[pv]*0.85,aa=da*330,ds=sk*0.1*30*12;const ts=Math.round(ssa+aa+ds),fs=Math.round(ts*em);document.getElementById('calcResult').innerHTML=`<div style="font-size:.8em;color:var(--muted);">工厂年总节省（项目端）</div><div class="big">${ts.toLocaleString()} 万/年</div><div class="breakdown"><span>☀ 光伏自发自用：${Math.round(ssa).toLocaleString()} 万</span><br><span>🔋 储能峰谷套利：${Math.round(aa).toLocaleString()} 万</span><br><span>⚡ 需量管理：${Math.round(ds).toLocaleString()} 万</span><br><span style="color:var(--orange);">🏭 EMC模式你分到(×${Math.round(em*100)}%)：<strong>${fs.toLocaleString()} 万/年</strong></span></div><div style="font-size:.75em;color:var(--muted);margin-top:10px;">建议光伏：<strong>${sk} kW</strong> · 建议储能：<strong>${st} kWh</strong><br>该省峰谷价差约 <strong>${ss[pv]} 元/kWh</strong></div>`;}
 function updateROIDefaults(){const t=document.getElementById('roiType').value;if(t==='pv_storage'){document.getElementById('roiInvest').value=500;document.getElementById('roiAnnual').value=120;}else if(t==='storage'){document.getElementById('roiInvest').value=200;document.getElementById('roiAnnual').value=54;}else{document.getElementById('roiInvest').value=800;document.getElementById('roiAnnual').value=180;}}
-
-function calculateROI(){const invest=parseFloat(document.getElementById('roiInvest').value)||500,annual=parseFloat(document.getElementById('roiAnnual').value)||120,split=parseFloat(document.getElementById('roiSplit').value)||0.8,years=parseInt(document.getElementById('roiYears').value)||25,escalator=document.getElementById('roiEscalator').value,opex=parseFloat(document.getElementById('roiOpex').value)||8;let totalReturn=0,cumulative=-invest,paybackYear=null,rows=[];for(let y=1;y<=years;y++){let sa=split;if(escalator==='1'){sa=split+Math.floor(y/5)*0.05;sa=Math.min(sa,0.95);}else if(escalator==='2'){sa=y<=10?split+0.05:split-0.1;sa=Math.max(sa,0.5);}const r=annual*sa,nc=r-opex;cumulative+=nc;totalReturn+=nc;if(paybackYear===null&&cumulative>=0)paybackYear=y;if(y<=10)rows.push({y,r:Math.round(r),nc:Math.round(nc),cum:Math.round(cumulative)});}document.getElementById('roiResult').innerHTML=`<div style="font-size:.8em;color:var(--muted);">投资回报摘要</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;"><div><div style="font-size:.7em;color:var(--muted);">回本周期</div><div style="font-size:1.3em;font-weight:700;color:var(--green);">${paybackYear?paybackYear+'年':'>'+years+'年'}</div></div><div><div style="font-size:.7em;color:var(--muted);">总回报倍数</div><div style="font-size:1.3em;font-weight:700;color:var(--green);">${(totalReturn/invest).toFixed(2)}x</div></div><div><div style="font-size:.7em;color:var(--muted);">ROI</div><div style="font-size:1.3em;font-weight:700;color:var(--orange);">${Math.round((totalReturn/invest)*100)}%</div></div><div><div style="font-size:.7em;color:var(--muted);">年化IRR(估)</div><div style="font-size:1.3em;font-weight:700;color:var(--orange);">~${Math.round((Math.pow((invest+totalReturn)/invest,1/years)-1)*100)}%</div></div></div><div style="font-size:.75em;color:var(--muted);margin-top:10px;">${years}年合约期投资方总收益：<strong style="color:var(--text);">${Math.round(totalReturn).toLocaleString()} 万元</strong></div>`;document.getElementById('roiCashflow').innerHTML=rows.map(r=>`<div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--border);"><span>第${r.y}年</span><span>+${r.nc}万</span><span style="color:${r.cum>=0?'var(--green)':'var(--red)'};">累计${r.cum}万</span></div>`).join('')+(years>10?'<div style="color:var(--muted);text-align:center;padding:6px;">... 共'+years+'年</div>':'');}
+function calculateROI(){const i=parseFloat(document.getElementById('roiInvest').value)||500,a=parseFloat(document.getElementById('roiAnnual').value)||120,sp=parseFloat(document.getElementById('roiSplit').value)||0.8,y=parseInt(document.getElementById('roiYears').value)||25,es=document.getElementById('roiEscalator').value,op=parseFloat(document.getElementById('roiOpex').value)||8;let tr=0,cu=-i,pb=null,rs=[];for(let yr=1;yr<=y;yr++){let sa=sp;if(es==='1'){sa=sp+Math.floor(yr/5)*0.05;sa=Math.min(sa,0.95);}else if(es==='2'){sa=yr<=10?sp+0.05:sp-0.1;sa=Math.max(sa,0.5);}const r=a*sa,nc=r-op;cu+=nc;tr+=nc;if(pb===null&&cu>=0)pb=yr;if(yr<=10)rs.push({y:yr,r:Math.round(r),nc:Math.round(nc),cum:Math.round(cu)});}document.getElementById('roiResult').innerHTML=`<div style="font-size:.8em;color:var(--muted);">投资回报摘要</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;"><div><div style="font-size:.7em;color:var(--muted);">回本周期</div><div style="font-size:1.3em;font-weight:700;color:var(--green);">${pb?pb+'年':'>'+y+'年'}</div></div><div><div style="font-size:.7em;color:var(--muted);">总回报倍数</div><div style="font-size:1.3em;font-weight:700;color:var(--green);">${(tr/i).toFixed(2)}x</div></div><div><div style="font-size:.7em;color:var(--muted);">ROI</div><div style="font-size:1.3em;font-weight:700;color:var(--orange);">${Math.round((tr/i)*100)}%</div></div><div><div style="font-size:.7em;color:var(--muted);">年化IRR(估)</div><div style="font-size:1.3em;font-weight:700;color:var(--orange);">~${Math.round((Math.pow((i+tr)/i,1/y)-1)*100)}%</div></div></div><div style="font-size:.75em;color:var(--muted);margin-top:10px;">${y}年合约期投资方总收益：<strong style="color:var(--text);">${Math.round(tr).toLocaleString()} 万元</strong></div>`;document.getElementById('roiCashflow').innerHTML=rs.map(r=>`<div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--border);"><span>第${r.y}年</span><span>+${r.nc}万</span><span style="color:${r.cum>=0?'var(--green)':'var(--red)'};">累计${r.cum}万</span></div>`).join('')+(y>10?'<div style="color:var(--muted);text-align:center;padding:6px;">... 共'+y+'年</div>':'');}
 </script>
 </body>
-</html> 
+</html>
