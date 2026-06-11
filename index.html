@@ -597,8 +597,11 @@ function renderTimeline(filter='all',year='all'){
     evts.forEach((e,ei)=>{
       const cls=e.t||'';
       const id='tc_'+y+'_'+ei;
+      const mArr=['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+      const mStr=e.m?mArr[e.m]:'';
       html+=`<div class="timeline-card ${cls}">
         <div class="card-top">
+          <span style="font-size:.7em;color:var(--muted);min-width:28px;">${mStr}</span>
           <span class="tag ${cls==='pl'?'tag-cn':cls==='sd'?'tag-sd':cls==='cn'?'tag-cn':cls==='op'?'tag-op':cls==='gz'?'tag-gz':''}">${catLabel[cls]||''}</span>
           ${e.pol?`<span class="card-pol" onclick="event.stopPropagation();document.getElementById('${id}').classList.toggle('show')">${e.pol} 📎</span>`:''}
         </div>
