@@ -1,0 +1,15 @@
+{
+  "dashboard": [
+    {"label":"新型储能累计装机","value":"136 GW","change":"5年增长40倍 (2020→2025)","up":true},
+    {"label":"市场化交易电量","value":"10 万亿kWh","change":"2030年预计占比70%","up":true},
+    {"label":"绿电交易量","value":"3,285 亿kWh","change":"同比增长38.3%","up":true},
+    {"label":"售电CR5集中度","value":"98.26%","change":"行业利润率降至1.96%","up":false},
+    {"label":"电力交易员缺口","value":"95%","change":"北京招量涨250%","up":true},
+    {"label":"取消固定电价省份","value":"27 省","change":"15分钟现货定价全面落地","up":true}
+  ],
+  "signals": [
+    {"level":"red","date":"2026.06","title":"1656号文 + 10号文","note":"电价全面市场化；EMC增值税优惠取消，合规趋严"},
+    {"level":"yellow","date":"正在发生","title":"代理交易爆发","note":"15分钟电价催生AI交易需求；储能售电光伏全需要代理交易能力"},
+    {"level":"green","date":"投资风向","title":"工业微电网EMC","note":"四份文件定调EMC从鼓励变必须；工厂节能改造躲不掉"}
+  ]
+}
