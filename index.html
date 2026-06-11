@@ -88,6 +88,46 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
 .policy-detail .src{color:var(--muted);font-size:.8em;margin-bottom:8px;}
 .policy-detail .interpret{line-height:1.7;}
 .policy-detail .interpret strong{color:var(--yellow);}
+
+/* Fishbone Timeline */
+.fishbone-wrap{overflow-x:auto;padding:20px 0;}
+.fishbone{position:relative;min-width:900px;padding:40px 0 60px;}
+.fishbone-spine{position:absolute;left:0;right:0;top:50%;height:3px;background:linear-gradient(90deg,var(--blue),var(--green),var(--orange),var(--red));border-radius:2px;transform:translateY(-50%);}
+.fishbone-years{display:flex;justify-content:space-between;position:relative;z-index:1;padding:0 10px;}
+.fishbone-year{text-align:center;position:relative;}
+.fishbone-year .yr{width:44px;height:44px;border-radius:50%;background:var(--card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9em;margin:0 auto;position:relative;z-index:2;}
+.fishbone-events{margin-top:8px;}
+.fishbone-event{position:relative;padding:6px 10px;margin:3px 0;font-size:.72em;border-radius:6px;cursor:pointer;transition:.2s;white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis;}
+.fishbone-event:hover{transform:scale(1.03);z-index:10;max-width:none;white-space:normal;overflow:visible;}
+.fishbone-event .tag{font-size:.75em;margin-right:3px;}
+.fishbone-connector{position:absolute;width:2px;background:var(--border);}
+.fishbone-year:nth-child(odd) .fishbone-events{margin-top:8px;}
+.fishbone-year:nth-child(even) .fishbone-events{margin-top:0;margin-bottom:8px;display:flex;flex-direction:column-reverse;}
+.fishbone-year:nth-child(even) .fishbone-event-row{display:flex;flex-direction:column-reverse;}
+
+.fishbone-event.pl{background:rgba(234,179,8,.1);border-left:3px solid #eab308;}
+.fishbone-event.sd{background:var(--blue-bg);border-left:3px solid var(--blue);}
+.fishbone-event.cn{background:var(--green-bg);border-left:3px solid var(--green);}
+.fishbone-event.op{background:var(--orange-bg);border-left:3px solid var(--orange);}
+.fishbone-event.gz{background:rgba(239,68,68,.1);border-left:3px solid var(--red);}
+
+/* Fishbone detail tooltip */
+.fishbone-detail{display:none;position:absolute;left:50%;transform:translateX(-50%);width:280px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;z-index:100;box-shadow:0 8px 32px rgba(0,0,0,.5);font-size:.85em;line-height:1.6;}
+.fishbone-detail.show{display:block;}
+.fishbone-detail .src{color:var(--muted);font-size:.8em;margin-bottom:8px;}
+.fishbone-detail .interpret{line-height:1.7;}
+.fishbone-detail .interpret strong{color:var(--yellow);}
+
+@media(max-width:768px){
+  .fishbone{min-width:auto;}
+  .fishbone-years{flex-direction:column;gap:12px;}
+  .fishbone-year{display:flex;align-items:flex-start;gap:12px;text-align:left;}
+  .fishbone-year .yr{flex-shrink:0;margin:0;}
+  .fishbone-events{margin-top:0!important;display:flex;flex-wrap:wrap;gap:4px;}
+  .fishbone-event{max-width:none;}
+  .fishbone-spine{display:none;}
+}
+
 @media(max-width:768px){header{flex-direction:column;align-items:flex-start;}nav{width:100%;overflow-x:auto;}.insight .row{flex-direction:column;}.calc-grid{grid-template-columns:1fr;}}
 </style>
 </head>
@@ -137,7 +177,7 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
     <button data-filter="op">🟠 运营/VPP</button>
     <button data-filter="gz">🔴 绿证/3060</button>
   </div>
-  <div id="timelineContainer"></div>
+  <div class="fishbone-wrap"><div class="fishbone" id="fishbone"></div></div>
 </div>
 
 <div class="tab" id="tab-insights">
@@ -418,9 +458,38 @@ const events = [
 ];
 
 function renderTimeline(filter='all'){
-  const c=document.getElementById('timelineContainer');
   const f=filter==='all'?events:events.filter(e=>e.t===filter);
-  c.innerHTML=f.map((e,i)=>{const id='pd_'+i;return`<div class="timeline-row"><div class="year">${e.y}</div><div class="content">${e.t==='pl'?'<span class="tag" style="background:rgba(234,179,8,.15);color:#eab308;">📋 政策</span>':''}${e.t==='sd'?'<span class="tag tag-sd">售电</span>':''}${e.t==='cn'?'<span class="tag tag-cn">储能</span>':''}${e.t==='op'?'<span class="tag tag-op">运营/VPP</span>':''}${e.t==='gz'?'<span class="tag tag-gz">绿证/3060</span>':''}${e.pol?'<span class="policy-link" onclick="document.getElementById(\''+id+'\').classList.toggle(\'show\')" title="点击查看政策来源与解读">'+e.pol+' 📎</span>':''}<p>${e.txt}</p>${e.co?'<p style="color:var(--yellow);font-size:.8em;">🏢 '+e.co+'</p>':''}${e.note?'<div class="policy-detail" id="'+id+'"><div class="src">📄 政策来源：'+e.src+'</div><div class="interpret">'+e.note+'</div></div>':''}</div></div>`}).join('');
+  const years=[...new Set(f.map(e=>e.y))].sort();
+  const fb=document.getElementById('fishbone');
+  
+  // Group events by year
+  const grouped={};
+  years.forEach(y=>{grouped[y]=f.filter(e=>e.y===y);});
+  
+  let html='<div class="fishbone-spine"></div><div class="fishbone-years">';
+  years.forEach((y,yi)=>{
+    const evts=grouped[y];
+    html+=`<div class="fishbone-year"><div class="yr">${y}</div><div class="fishbone-events">`;
+    evts.forEach((e,ei)=>{
+      const cls=e.t||'';
+      const id='fb_'+y+'_'+ei;
+      const catTag=e.t==='pl'?'📋':e.t==='sd'?'🔵':e.t==='cn'?'🟢':e.t==='op'?'🟠':e.t==='gz'?'🔴':'';
+      html+=`<div class="fishbone-event ${cls}" onclick="document.getElementById('${id}').classList.toggle('show')" title="${e.txt.replace(/"/g,'&quot;')}">
+        ${catTag} ${e.txt.substring(0,30)}${e.txt.length>30?'…':''}
+        ${e.pol?' 📎':''}
+        ${e.co?' 🏢':''}
+        <div class="fishbone-detail" id="${id}">
+          ${e.pol?`<div class="src">📄 ${e.pol} · ${e.src||''}</div>`:''}
+          <p style="margin-bottom:6px;">${e.txt}</p>
+          ${e.co?`<p style="color:var(--yellow);font-size:.85em;">🏢 ${e.co}</p>`:''}
+          ${e.note?`<div class="interpret">${e.note}</div>`:''}
+        </div>
+      </div>`;
+    });
+    html+='</div></div>';
+  });
+  html+='</div>';
+  fb.innerHTML=html;
 }
 renderTimeline();
 
