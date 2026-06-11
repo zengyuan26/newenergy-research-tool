@@ -61,6 +61,8 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
 .sub-nav button{padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-size:.85em;}
 .sub-nav button:hover,.sub-nav button.active{background:var(--orange-bg);color:var(--orange);border-color:var(--orange);}
 .sub-tab{display:none;}.sub-tab.active{display:block;}
+.sub-tab-co{{display:none;}}
+.sub-tab-co.active{{display:block;}}
 .sub-tab-co{display:none;}
 .sub-tab-co.active{display:block;}
 .glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;}
@@ -196,6 +198,84 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
     <button data-filter="gz">🔴 绿证/3060</button>
   </div>
   <div class="timeline" id="timelineContainer"></div>
+  </div>
+  <div class="sub-tab-co" id="sub-co-supplychain">
+    <div style="margin-bottom:18px;">
+      <h4 style="color:var(--orange);margin-bottom:8px;font-size:.92em;">上游 · 正极材料</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;"><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
+          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">层状氧化物</div>
+          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 中科海钠 · 钠创新能源 · 宁德时代</div>
+          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">量产领先，宁德钠新已装车</div>
+          <div style="font-size:.7em;color:var(--muted);">能量密度最高，工艺最成熟</div>
+        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
+          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">聚阴离子</div>
+          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 鹏辉能源 · 众钠能源 · 珈钠能源</div>
+          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">循环寿命长，2025起量产加速</div>
+          <div style="font-size:.7em;color:var(--muted);">适合长时储能场景</div>
+        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
+          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">普鲁士蓝/白</div>
+          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 宁德时代（二代） · 汉行科技</div>
+          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">成本最低，但结构稳定性待验证</div>
+          <div style="font-size:.7em;color:var(--muted);">理论成本比层状低30%</div>
+        </div></div>
+    </div><div style="margin-bottom:18px;">
+      <h4 style="color:var(--orange);margin-bottom:8px;font-size:.92em;">上游 · 负极材料</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;"><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
+          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">硬碳</div>
+          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 佰思格 · 杉杉股份 · 贝特瑞</div>
+          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">国产化率>80%，成本降至5-8万/吨</div>
+          <div style="font-size:.7em;color:var(--muted);">主流路线，生物质前驱体</div>
+        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
+          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">软碳</div>
+          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 中科海钠</div>
+          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">中科海钠自研，无定形碳负极</div>
+          <div style="font-size:.7em;color:var(--muted);">与层状氧化物正极配对</div>
+        </div></div>
+    </div><div style="margin-bottom:18px;">
+      <h4 style="color:var(--orange);margin-bottom:8px;font-size:.92em;">中游 · 电芯与系统</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;"><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
+          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">电芯制造</div>
+          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 宁德时代 · 中科海钠 · 钠创新能源 · 比亚迪 · 鹏辉能源</div>
+          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">宁德60GWh订单领跑；中科海钠1GWh产线满产</div>
+          <div style="font-size:.7em;color:var(--muted);">2026年全行业产能规划超100GWh</div>
+        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
+          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">BMS/PCS</div>
+          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 华为数字能源 · 阳光电源 · 科华数据</div>
+          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">钠电专用BMS适配中，目前多沿用锂电方案</div>
+          <div style="font-size:.7em;color:var(--muted);">钠电电压平台不同，BMS需重新开发</div>
+        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
+          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">系统集成</div>
+          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 中钠能源 · 国电投 · 三峡能源</div>
+          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">铁岭100MW/200MWh钠电站签约</div>
+          <div style="font-size:.7em;color:var(--muted);">东北首批百兆瓦级钠电共享储能</div>
+        </div></div>
+    </div><div style="margin-bottom:18px;">
+      <h4 style="color:var(--orange);margin-bottom:8px;font-size:.92em;">下游 · 应用场景</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;"><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
+          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">高寒储能</div>
+          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 铁岭100MW · 洪湖200MWh · 佳木斯基地</div>
+          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">-40℃可用，锂电做不到的独占场景</div>
+          <div style="font-size:.7em;color:var(--muted);">东北/内蒙/青藏，1/3国土冬季<-20℃</div>
+        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
+          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">工商业储能</div>
+          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 浙江/广东试点项目</div>
+          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">峰谷套利+需量管理，2026起放量</div>
+          <div style="font-size:.7em;color:var(--muted);">成本比锂电低20-30%，回本更快</div>
+        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
+          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">两轮车/低速车</div>
+          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 雅迪 · 爱玛 · 台铃</div>
+          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">钠电两轮车2025上市，成本是锂电的60%</div>
+          <div style="font-size:.7em;color:var(--muted);">替代铅酸的最大市场</div>
+        </div><div style="background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:8px;">
+          <div style="font-weight:700;font-size:.88em;margin-bottom:3px;">启停电源</div>
+          <div style="font-size:.78em;color:var(--muted);margin-bottom:3px;">🏢 骆驼股份 · 风帆股份</div>
+          <div style="font-size:.75em;color:var(--green);margin-bottom:2px;">-40℃冷启动优势，柴油重卡/工程机械刚需</div>
+          <div style="font-size:.7em;color:var(--muted);">单台价值量不高但体量巨大</div>
+        </div></div>
+    </div>
+    <div class="card" style="margin-top:16px;padding:16px;"><h3 style="font-size:.9em;">⭐ 产业链关键玩家</h3></div>
+    <div class="company-grid"><div class="company-card"><div class="name">宁德时代</div><div class="type">全产业链龙头</div><div class="info">2025钠新量产→2026 60GWh订单→二代普鲁士蓝研发中</div></div><div class="company-card"><div class="name">中科海钠</div><div class="type">技术先行者</div><div class="info">中科院背景，层状氧化物+软碳路线，1GWh产线满产</div></div><div class="company-card"><div class="name">钠创新能源</div><div class="type">正极材料专精</div><div class="info">层状氧化物正极出货量领先，绑定多家电芯厂</div></div><div class="company-card"><div class="name">比亚迪</div><div class="type">全产业链布局</div><div class="info">自研钠电用于储能+两轮车，2026产能爬坡</div></div><div class="company-card"><div class="name">华为数字能源</div><div class="type">系统集成/PCS</div><div class="info">钠电专用PCS适配+AI调度，高寒场景系统方案</div></div></div>
+  </div>
 </div>
 
 <div class="tab" id="tab-insights">
@@ -208,6 +288,11 @@ main{max-width:1200px;margin:0 auto;padding:24px 20px;}
 </div>
 
 <div class="tab" id="tab-companies">
+  <div class="sub-nav" id="companyNav" style="margin-bottom:16px;">
+    <button class="active" data-sub-co="giants">🏢 跨界巨头</button>
+    <button data-sub-co="supplychain">🔗 钠电产业链</button>
+  </div>
+  <div class="sub-tab-co active" id="sub-co-giants">
   <div class="company-grid"><div class="company-card"><div class="name">宁德时代</div><div class="type">储能龙头 · 2017入局</div><div class="info">2025"钠新"钠电池量产；2026获60GWh订单；天恒储能系统发布<br><span style="color:var(--muted);font-size:.8em;">全球储能电芯市占>40%</span></div></div><div class="company-card"><div class="name">华为数字能源</div><div class="type">跨界巨头 · 2018入局</div><div class="info">逆变器全球出货第一；布局VPP聚合平台；AI调度系统商用<br><span style="color:var(--muted);font-size:.8em;">用ICT技术重构能源行业</span></div></div><div class="company-card"><div class="name">蚂蚁集团</div><div class="type">跨界巨头 · 2024入局</div><div class="info">与协鑫合资"蚂蚁鑫能"；1600万台设备接入；EnergyTS 3.0 AI预测准确率94%+<br><span style="color:var(--muted);font-size:.8em;">区块链+AI=能源交易信任层</span></div></div><div class="company-card"><div class="name">滴滴（小桔能源）</div><div class="type">跨界巨头 · 2025入局</div><div class="info">从充电桩切入电力交易；布局零售代理交易<br><span style="color:var(--muted);font-size:.8em;">出行数据+电力交易=精准负荷预测</span></div></div><div class="company-card"><div class="name">京东</div><div class="type">跨界巨头 · 2025入局</div><div class="info">拿下售电牌照；可做电力批发+零售<br><span style="color:var(--muted);font-size:.8em;">电商平台撮合能力迁移至电力交易</span></div></div><div class="company-card"><div class="name">协鑫能科</div><div class="type">能源龙头 · 2023入局</div><div class="info">可调负荷550MW；与蚂蚁合资布局VPP<br><span style="color:var(--muted);font-size:.8em;">民营能源巨头跨界数字化</span></div></div><div class="company-card"><div class="name">五大六小集团</div><div class="type">国家队 · 2015入局</div><div class="info">CR5售电市场份额98.26%；全面布局储能+微电网+VPP<br><span style="color:var(--muted);font-size:.8em;">制度红利最大受益者，利润最厚</span></div></div><div class="company-card"><div class="name">正泰安能</div><div class="type">民营新势力 · 2020入局</div><div class="info">抖音获客800+咨询/3月；居间人模式跑通<br><span style="color:var(--muted);font-size:.8em;">渠道创新+EMC模式代表</span></div></div></div>
 </div>
 
